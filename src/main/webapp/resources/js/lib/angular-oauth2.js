@@ -172,6 +172,7 @@
                         data = queryString.stringify(data);
                         options = angular.extend({
                             headers: {
+                            	 Authorization: this.config.Authorization,
                                 "Content-Type": "application/x-www-form-urlencoded"
                             }
                         }, options);
