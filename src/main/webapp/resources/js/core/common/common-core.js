@@ -8,6 +8,10 @@ var commonModule = angular.module('commonModule', [])
 			"USER_GET_USER_DETAIL" : {
 				"baseUrl" : "onlinejudge-ms-user/users?email={0}",
 				"params" : ["email"]
+			},
+			"USER_CREATE_NEW_USER" : {
+				"baseUrl" : "onlinejudge-ms-user/users",
+				"params" : []
 			}
 	}
 	

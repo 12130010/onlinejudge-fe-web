@@ -1,7 +1,17 @@
 'use strict';
-onlinejudgeApp.service('userService', function($http, $q, OAuth, connectorService) {
+onlinejudgeApp.service('userService', function($http, $q, OAuth, $cookies, connectorService) {
 	function UserService(){
 		this.userDetail = {};
+		
+		var now = new Date();
+		
+		//config for persist data into cookie
+		this.config = {
+				name: "userInfo",
+				options: {
+					expires :  new Date(now.getFullYear(), now.getMonth(), now.getDate()+1)
+				}
+		};
 	}
 	
 	UserService.prototype.isAuthenticated = function isAuthenticated(){
@@ -12,10 +22,17 @@ onlinejudgeApp.service('userService', function($http, $q, OAuth, connectorServic
 		var self = this;
     	var deferred = $q.defer();
     	
-		OAuth.getAccessToken(user).then(function(response){
-			self.loadUserDetail().then(function(){
+		OAuth.getAccessToken(user).then(function success(response){
+			//persist user email
+			$cookies.putObject(self.config.name, user, self.config.options);
+			
+			self.loadUserDetailByEmail(user.username).then(function(){
 				deferred.resolve();
+			}, function fail(){
+				deferred.reject();
 			});
+		}, function error(response){
+			deferred.reject(response);
 		});
 		
 		return deferred.promise; 
@@ -44,20 +61,45 @@ onlinejudgeApp.service('userService', function($http, $q, OAuth, connectorServic
 		return deferred.promise; 
 	}
 	
-	UserService.prototype.loadUserDetail = function getUserDetail(){
+	//load user have login
+	UserService.prototype.loadUserDetail = function loadUserDetail(){
+		var user = $cookies.getObject(this.config.name);
+		return this.loadUserDetailByEmail(user.username);
+	}
+	
+	UserService.prototype.loadUserDetailByEmail = function loadUserDetailByEmail(email){
 		var self = this;
 		var deferred = $q.defer();
 		
 		connectorService.get(
 				{
 					actionName: "USER_GET_USER_DETAIL",
-					actionParams : ["hoangnhuocquy@csc.com"]
+					actionParams : [email]
 				}
 		).then(function success(response){
 			angular.extend(self.userDetail, response.data);
 			deferred.resolve(self.userDetail);
 		}, function error(response){
 			deferred.reject();
+		});
+		
+		return deferred.promise; 
+	}
+	
+	UserService.prototype.register = function register(user){
+		var self = this;
+		var deferred = $q.defer();
+		
+		connectorService.post(
+				{
+					actionName: "USER_CREATE_NEW_USER",
+					actionParams : [],
+					data: user
+				}
+		).then(function success(response){
+			deferred.resolve(response);
+		}, function error(response){
+			deferred.reject(response);
 		});
 		
 		return deferred.promise; 
