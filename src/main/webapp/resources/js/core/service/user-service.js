@@ -24,9 +24,9 @@ onlinejudgeApp.service('userService', function($http, $q, OAuth, $cookies, conne
     	
 		OAuth.getAccessToken(user).then(function success(response){
 			//persist user email
-			$cookies.putObject(self.config.name, user, self.config.options);
+			$cookies.putObject(self.config.name, response.data, self.config.options);
 			
-			self.loadUserDetailByEmail(user.username).then(function(){
+			self.loadUserDetailByEmail().then(function(){
 				deferred.resolve();
 			}, function fail(){
 				deferred.reject();
@@ -64,17 +64,17 @@ onlinejudgeApp.service('userService', function($http, $q, OAuth, $cookies, conne
 	//load user have login
 	UserService.prototype.loadUserDetail = function loadUserDetail(){
 		var user = $cookies.getObject(this.config.name);
-		return this.loadUserDetailByEmail(user.username);
+		return this.loadUserDetailByEmail();
 	}
 	
-	UserService.prototype.loadUserDetailByEmail = function loadUserDetailByEmail(email){
+	UserService.prototype.loadUserDetailByEmail = function loadUserDetailByEmail(){
 		var self = this;
 		var deferred = $q.defer();
 		
 		connectorService.get(
 				{
 					actionName: "USER_GET_USER_DETAIL",
-					actionParams : [email]
+					actionParams : []
 				}
 		).then(function success(response){
 			angular.extend(self.userDetail, response.data);

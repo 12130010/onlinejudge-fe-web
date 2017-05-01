@@ -1,2 +1,8 @@
-<h1>Home</h1>
-<div ui-view="main" ></div>
+<div class="text-center">
+	<h1>Home</h1>
+	<div ui-view="main" ></div>
+	
+	<div ng-if="isAuthenticated()">
+		<a ui-sref="management">Management contest</a>
+	</div>
+</div>

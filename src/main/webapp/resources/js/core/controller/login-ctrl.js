@@ -17,12 +17,9 @@ var loginController = function ($state, $scope, userService){
 	init();
 	
 	$scope.login = function login(){
-		$scope.showLoadingBar();
 		userService.login($scope.user).then(function(response){
 			$state.go("home");
-			$scope.hideLoadingBar();
 		}, function error(){
-			 $scope.hideLoadingBar();
 			 alert("Username and password were not correct!");
 		});
 	}

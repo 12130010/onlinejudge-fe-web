@@ -12,7 +12,8 @@ var onlinejudgeApp = angular.module('onlinejudgeApp',
 							  'angular-oauth2',
 							  'ngCookies',
 							  'ncy-angular-breadcrumb',
-							  'commonModule'
+							  'commonModule',
+							  'angularUtils.directives.dirPagination'
 							]);
 onlinejudgeApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
 		$urlRouterProvider.otherwise("/");
@@ -23,8 +24,8 @@ onlinejudgeApp.config(['$stateProvider', '$urlRouterProvider', function($statePr
 				'main@': {
 					templateUrl: 'views/home.html',
 				},
-				'header@': {
-					templateUrl: 'views/header.html'
+				'menu@': {
+					templateUrl: 'views/normal-menu.html'
 				}
 			},
 			ncyBreadcrumb: {
@@ -38,8 +39,8 @@ onlinejudgeApp.config(['$stateProvider', '$urlRouterProvider', function($statePr
 					templateUrl: 'views/login.html',
 					controller: loginController
 				},
-				'header@': {
-					templateUrl: 'views/header.html'
+				'menu@': {
+					templateUrl: 'views/normal-menu.html'
 				}
 			},
 			ncyBreadcrumb: {
@@ -53,12 +54,41 @@ onlinejudgeApp.config(['$stateProvider', '$urlRouterProvider', function($statePr
 					templateUrl: 'views/register.html',
 					controller: registerController
 				},
-				'header@' : {
-					templateUrl: 'views/header.html'
+				'menu@': {
+					templateUrl: 'views/normal-menu.html'
 				}
 			},
 			ncyBreadcrumb: {
 				label: 'Register'
+			}
+		})
+		.state('management', {
+			url: '/management',
+			views: {
+				'main@': {
+					templateUrl: 'views/management.html'
+				},
+				'menu@': {
+					templateUrl: 'views/management-menu.html'
+				}
+			},
+			ncyBreadcrumb: {
+				label: 'Management'
+			}
+		})
+		.state('management.problems', {
+			url: '/problems',
+			views: {
+				'main@': {
+					templateUrl: 'views/management-problems.html',
+					controller: problemController
+				},
+				'menu@': {
+					templateUrl: 'views/management-menu.html'
+				}
+			},
+			ncyBreadcrumb: {
+				label: 'Problems'
 			}
 		})
 	}
@@ -100,31 +130,22 @@ onlinejudgeApp.config(['$stateProvider', '$urlRouterProvider', function($statePr
       $state.go("login");
     });
  }])
- .controller('mainController', function($scope, userService) {
+ .controller('mainController', function($rootScope, $state, userService) {
 	 
-	 $scope.userDetail = userService.userDetail;
+	 $rootScope.userDetail = userService.userDetail;
 	 
 	 var loaddingBarCounter = 0;
 	 
-	 $scope.logout = function logout(){
-		 userService.logout();
+	 $rootScope.logout = function logout(){
+		 userService.logout().then(function success(){
+			 $state.go("login");
+		 });
 	 }
 	 
-	 $scope.isAuthenticated = function isAuthenticated(){
+	 $rootScope.isAuthenticated = function isAuthenticated(){
 		return userService.isAuthenticated();
 	 }
 	 
-	 $scope.showLoadingBar = function(){
-		 loaddingBarCounter++;
-		 $("#ipos-full-loading").css("display", "block");
-	 }
-	 $scope.hideLoadingBar = function(){
-		 loaddingBarCounter--;
-		 if(loaddingBarCounter <= 0){
-			 $("#ipos-full-loading").css("display", "none");
-			 loaddingBarCounter = 0;
-		 }
-	 }
 	 
 	 function init(){
 		 if(userService.isAuthenticated()){

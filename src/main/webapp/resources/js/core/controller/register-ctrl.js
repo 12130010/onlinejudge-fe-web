@@ -25,6 +25,8 @@ var registerController = function ($state, $scope, commonService, userService){
 			if(response.status == 400){
 				//TODO create message
 				alert(response.data.obj);
+			}else{
+				alert("Error! Please contact admin!");
 			}
 		});
 	}

@@ -12,6 +12,10 @@ var commonModule = angular.module('commonModule', [])
 			"USER_CREATE_NEW_USER" : {
 				"baseUrl" : "onlinejudge-ms-user/users",
 				"params" : []
+			},
+			"CONTEST_GET_ALL_PROBLEM" : {
+				"baseUrl" : "onlinejudge-ms-contest/problems",
+				"params" : []
 			}
 	}
 	
@@ -134,7 +138,7 @@ var commonModule = angular.module('commonModule', [])
 })
 .service('connectorService', ['$q', '$http', '$log', 'commonService', function($q, $http, $log, commonService) {
 		function ConnectorService() {
-			
+			this.loadingBarCounter = 0;
 		}
 		
 		/**
@@ -150,11 +154,14 @@ var commonModule = angular.module('commonModule', [])
 			var deferred = $q.defer();
 			
 			$log.debug("Call with actionName: " + param.actionName + ", and actionParams: " + param.actionParams);
+			self.showLoadingBar();
 			$http.get(commonService.getUrl(commonService.urlMap[param.actionName], param.actionParams)).then(function success(response){
 				$log.debug(response);
 				deferred.resolve(response);
+				self.hideLoadingBar();
 			}, function fail(response){
 				$log.debug(response);
+				self.hideLoadingBar();
 				deferred.reject(response);
 			});
 			
@@ -176,17 +183,32 @@ var commonModule = angular.module('commonModule', [])
 			$log.debug("Call with actionName: " + param.actionName + ", and actionParams: " + param.actionParams);
 			$log.debug(param.data);
 			
+			self.showLoadingBar();
 			$http.post(commonService.getUrl(commonService.urlMap[param.actionName], param.actionParams), param.data).then( function success( response ){
 				$log.debug(response);
+				self.hideLoadingBar();
 				deferred.resolve(response);
 			}, function fail(response){
 				$log.debug(response);
+				self.hideLoadingBar();
 				deferred.reject(response);
 			});
 			
 			return deferred.promise;
 		}
+		ConnectorService.prototype.showLoadingBar = function showLoadingBar(){
+			this.loadingBarCounter++;
+			$("#ipos-full-loading").css("display", "block");
+		}
 		
+		ConnectorService.prototype.hideLoadingBar = function hideLoadingBar(){
+			this.loadingBarCounter--;
+			if(this.loadingBarCounter <= 0){
+				 $("#ipos-full-loading").css("display", "none");
+				 this.loaddingBarCounter = 0;
+			 }
+		}
+		 
 		return new ConnectorService();
 	}
 ])
