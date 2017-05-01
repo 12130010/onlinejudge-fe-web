@@ -16,7 +16,17 @@ var commonModule = angular.module('commonModule', [])
 			"CONTEST_GET_ALL_PROBLEM" : {
 				"baseUrl" : "onlinejudge-ms-contest/problems",
 				"params" : []
+			},
+			"CONTEST_SAVE_PROBLEM" : {
+				"baseUrl" : "onlinejudge-ms-contest/problems",
+				"params" : []
+			},
+			"CONTEST_SAVE_FILE_OF_PROBLEM" : {
+				"baseUrl" : "onlinejudge-ms-contest/problems/upfile",
+				"params" : []
 			}
+			
+			
 	}
 	
 	this.CONSTANTS = {
@@ -176,7 +186,7 @@ var commonModule = angular.module('commonModule', [])
 		 * @param 	{object}		params.data 			data send for post action (optional)
 		 * @return an Angular Promise instance
 		 */
-		ConnectorService.prototype.post = function get(param){
+		ConnectorService.prototype.post = function post(param){
 			var self = this;
 			var deferred = $q.defer();
 			
@@ -196,6 +206,49 @@ var commonModule = angular.module('commonModule', [])
 			
 			return deferred.promise;
 		}
+		/**
+		 * Main function, which call the underline connector
+		 * @param 	{object}		params 					input for executing actions, which has properties:
+		 * @param 	{string}		params.actionName 		the action which connector need to execute
+		 * @param 	{array}			params.actionParams 	array of actionParams
+		 * @param 	{object}		params.data 			array of file, file is {name: "testCaseInput", file: file}
+		 * @return an Angular Promise instance
+		 */
+		ConnectorService.prototype.postResource = function postResource(param){
+			var self = this;
+			var deferred = $q.defer();
+			
+			$log.debug("Call with actionName: " + param.actionName + ", and actionParams: " + param.actionParams);
+			$log.debug(param.data);
+			
+			 var formData = new FormData();
+			 angular.forEach(param.data, function (value){
+				 /*
+				  * value : {name: "testCaseInput", file: file}
+				  */
+				formData.append(value.name, value.file); 
+			 });
+			
+			self.showLoadingBar();
+			$http.post(commonService.getUrl(commonService.urlMap[param.actionName], param.actionParams),
+						formData, //file
+						{ //config
+							transformRequest: angular.identity,
+				            headers: {'Content-Type': undefined}
+						} 
+					).then( function success( response ){
+						$log.debug(response);
+						self.hideLoadingBar();
+						deferred.resolve(response);
+					}, function fail(response){
+						$log.debug(response);
+						self.hideLoadingBar();
+						deferred.reject(response);
+					});
+			
+			return deferred.promise;
+		}
+		
 		ConnectorService.prototype.showLoadingBar = function showLoadingBar(){
 			this.loadingBarCounter++;
 			$("#ipos-full-loading").css("display", "block");

@@ -66,6 +66,7 @@
 		
 		<script src="resources/js/core/config/config.js"></script>
 		<script src="resources/js/core/common/common-core.js"></script>
+		<script src="resources/js/core/common/common-directive.js"></script>
 		<script src="resources/js/core/app.js"></script>
 		<script src="resources/js/core/controller/login-ctrl.js"></script>
 		<script src="resources/js/core/controller/register-ctrl.js"></script>
