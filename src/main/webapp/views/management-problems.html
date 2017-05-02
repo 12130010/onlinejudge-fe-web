@@ -30,10 +30,10 @@
       		{{problem.timeLimit}}
       	</td>
       	<td>
-      		{{problem.createdDate | date: 'dd/MM/yyyy'}}
+      		{{problem.createdDate | date: 'dd/MM/yyyy hh:mm:ss'}}
       	</td>
       	<td>
-      		{{problem.updateDate | date: 'dd/MM/yyyy'}}
+      		{{problem.updateDate | date: 'dd/MM/yyyy hh:mm:ss'}}
       	</td>
       	<td>
       		{{problem.version}}
@@ -42,10 +42,10 @@
       		{{problem.listTestCase.length}}
       	</td>
       	<td>
-      		<a class="btn btn-primary">Edit</a>
+      		<a class="btn btn-primary" ng-click="updateProblem(problem.id)">Edit</a>
       	</td>
       	<td>
-      		<a class="btn btn-danger">Delete</a>
+      		<a class="btn btn-danger" ng-click="deleteProblem(problem.id)">Delete</a>
       	</td>
       </tr>
 	</tbody>
@@ -61,8 +61,9 @@
       <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Add new problem</h4>
+          <button type="button" class="close" ng-click="closeForm()">&times;</button>
+          <h4 ng-if="!problem.id" class="modal-title">Add new problem</h4>
+          <h4 ng-if="problem.id" class="modal-title">Update problem</h4>
         </div>
         <div class="modal-body">
 			<div class="row main" style="margin: 0 15px;">
@@ -72,8 +73,8 @@
 						<div class="cols-sm-10">
 							<div class="input-group">
 								<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-								<input type="text" class="form-control" name="name" id="name"  placeholder="Enter your Name"
-								ng-model="problem.name"/>
+								<input type="text" class="form-control" name="name" id="name"  placeholder="Enter Problem's name"
+								ng-model="problem.name" required="required"/>
 							</div>
 						</div>
 					</div>
@@ -83,8 +84,8 @@
 						<div class="cols-sm-10">
 							<div class="input-group">
 								<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-								<input type="text" class="form-control" name="name" id="name"  placeholder="Enter your Name"
-								ng-model="problem.timeLimit"/>
+								<input type="number" class="form-control" name="name" id="name"  placeholder="Enter time limit"
+								ng-model="problem.timeLimit" required="required"/>
 							</div>
 						</div>
 					</div>
@@ -95,7 +96,7 @@
 							<div class="input-group">
 								<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
 								<input type="file" class="form-control" name="name" id="name"  placeholder="Enter your Name"
-								file-model="problem.problemFile"/>
+								file-model="problem.problemFile" accept=".pdf" required="required"/>
 							</div>
 						</div>
 					</div>
@@ -106,7 +107,7 @@
 							<div class="input-group">
 								<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
 								<input type="file" class="form-control" name="name" id="name"  placeholder="Enter your Name"
-								file-model="problem.testCaseInput"/>
+								file-model="problem.testCaseInput" accept=".txt"/>
 							</div>
 						</div>
 					</div>
@@ -117,7 +118,7 @@
 							<div class="input-group">
 								<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
 								<input type="file" class="form-control" name="name" id="name"  placeholder="Enter your Name"
-								file-model="problem.testCaseOutput"/>
+								file-model="problem.testCaseOutput" accept=".txt"/>
 							</div>
 						</div>
 					</div>
@@ -125,8 +126,9 @@
 			</div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-success" ng-click="saveProblem()">Add problem</button>
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button ng-if="!problem.id" type="button" class="btn btn-success" ng-click="saveProblem()">Add problem</button>
+          <button ng-if="problem.id" type="button" class="btn btn-success" ng-click="saveProblem()">Update problem</button>
+          <button type="button" class="btn btn-default" ng-click="closeForm()">Close</button>
         </div>
       </div>
       

@@ -24,6 +24,10 @@ var commonModule = angular.module('commonModule', [])
 			"CONTEST_SAVE_FILE_OF_PROBLEM" : {
 				"baseUrl" : "onlinejudge-ms-contest/problems/upfile",
 				"params" : []
+			},
+			"CONTEST_DELETE_PROBLEM" : {
+				"baseUrl" : "onlinejudge-ms-contest/problems/delete",
+				"params" : []
 			}
 			
 			

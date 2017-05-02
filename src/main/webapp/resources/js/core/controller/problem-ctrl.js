@@ -8,11 +8,26 @@ var problemController = function ($state, $scope, commonService, problemService)
 		$('#myModal').modal('show');
 	}
 	
+	$scope.updateProblem = function updateProblem(problemID){
+		angular.forEach($scope.listProblem, function (problem){
+			if(problemID == problem.id){
+				$scope.problem = angular.copy(problem, {});
+			}
+		})
+		
+		$('#myModal').modal('show');
+	}
+	
+	$scope.closeForm = function closeForm(){
+		$('#myModal').modal('hide');
+		problemService.getListProblem();
+	}
+	
 	$scope.saveProblem = function saveProblem(){
 		// model send to server
 		var problemData;
 		if($scope.problem.id){ // update problem
-			
+			problemData = $scope.problem;
 		}else{ //add new problem
 			problemData = {
 				id : $scope.problem.id,
@@ -22,9 +37,12 @@ var problemController = function ($state, $scope, commonService, problemService)
 			};
 			
 		}
+		//step 1: save problem information except resource file.
 		problemService.saveProblem(problemData).then(function success(response){
 			
 			problemData = response.data;
+			
+			//step 2: prepare resource file to send to server
 			
 			// prepare problemFile, testCaseInput and testCaseOutput to send to server
 			var files = [];
@@ -61,6 +79,22 @@ var problemController = function ($state, $scope, commonService, problemService)
 		
 	}
 	
+	$scope.deleteProblem = function deleteProblem(problemID){
+		var problemData ;
+		angular.forEach($scope.listProblem, function (problem){
+			if(problemID == problem.id){
+				problemData = problem;
+			}
+		})
+		if (confirm('Are you sure you want to delete problem with name: ' + problemData.name + "?")) {
+			problemService.deleteProblem(problemData).then(function success(){
+				alert("Delete success!")
+				problemService.getListProblem();
+			}, function fail(response){
+				alert("Delete fail!")
+			});
+		}
+	}
 	
 	function init(){
 		$scope.listProblem = problemService.listProblem;

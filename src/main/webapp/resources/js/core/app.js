@@ -122,7 +122,7 @@ onlinejudgeApp.config(['$stateProvider', '$urlRouterProvider', function($statePr
 
       // Refresh token when a `invalid_token` error occurs.
       if ('invalid_token' === rejection.data.error) {
-    	 alert("Token is expire! Please try again with neu token.");
+    	 alert("Token is expire! Please try again with new token.");
         return OAuth.getRefreshToken();
       }
 
