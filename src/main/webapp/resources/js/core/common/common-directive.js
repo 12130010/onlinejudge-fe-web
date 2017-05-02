@@ -1,4 +1,6 @@
-angular.module('commonModule').directive('fileModel', ['$parse', function ($parse) {
+'use strict';
+angular.module('commonModule')
+.directive('fileModel', ['$parse', function ($parse) {
     return {
         restrict: 'A',
         link: function(scope, element, attrs) {
@@ -12,4 +14,12 @@ angular.module('commonModule').directive('fileModel', ['$parse', function ($pars
             });
         }
     };
+}])
+.directive('maskInput', ['$parse', function ($parse) {
+	return {
+		restrict:'A',
+		link: function(scope, element, attrs, model) {
+			element.mask(attrs.maskInput,{placeholder:attrs.maskInputPlaceholder});
+		}
+	}
 }]);

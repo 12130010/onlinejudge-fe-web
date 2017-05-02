@@ -13,7 +13,8 @@ var onlinejudgeApp = angular.module('onlinejudgeApp',
 							  'ngCookies',
 							  'ncy-angular-breadcrumb',
 							  'commonModule',
-							  'angularUtils.directives.dirPagination'
+							  'angularUtils.directives.dirPagination',
+							  'ngMaterial'
 							]);
 onlinejudgeApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
 		$urlRouterProvider.otherwise("/");
@@ -89,6 +90,21 @@ onlinejudgeApp.config(['$stateProvider', '$urlRouterProvider', function($statePr
 			},
 			ncyBreadcrumb: {
 				label: 'Problems'
+			}
+		})
+		.state('management.contests', {
+			url: '/contests',
+			views: {
+				'main@': {
+					templateUrl: 'views/management-contests.html',
+					controller: contestController
+				},
+				'menu@': {
+					templateUrl: 'views/management-menu.html'
+				}
+			},
+			ncyBreadcrumb: {
+				label: 'Contest'
 			}
 		})
 	}

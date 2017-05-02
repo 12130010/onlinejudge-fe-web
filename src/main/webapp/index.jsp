@@ -10,9 +10,13 @@
 		<title>Online Judge</title>
 		<link rel="stylesheet" href="resources/css/bootstrap/bootstrap.css">
 		<link rel="stylesheet" href="resources/css/custom/custom.css">
+		<link rel="stylesheet" href="resources/css/angular/angular-material.css">
 		
 		<script src="resources/js/lib/jquery-3.2.0.js"></script>
+		<script src="resources/js/lib/jquery.mask.js"></script>
+		<script src="resources/js/lib/moment.min.js"></script>
 		<script src="resources/js/lib/angular.js"></script>
+		<script src="resources/js/lib/angular-material.js"></script>
 		<script src="resources/js/lib/angular-ui-router.js"></script>
 		<script src="resources/js/lib/bootstrap.js"></script>
 		<script src="resources/js/lib/angular-cookies.js"></script>
@@ -20,6 +24,9 @@
 		<script src="resources/js/lib/angular-oauth2.js"></script>
 		<script src="resources/js/lib/angular-breadcrumb.js"></script>
 		<script src="resources/js/lib/dirPagination.js"></script>
+		<script src="resources/js/lib/angular-aria.js"></script>
+		<script src="resources/js/lib/angular-animate.js"></script>
+		<script src="resources/js/lib/angular-messages.js"></script>
 		
 	</head> 
 	<body ng-app="onlinejudgeApp" ng-controller="mainController">
@@ -59,7 +66,6 @@
 		    </div>
 		  </div>
 		</nav>
-
 		<div ncy-breadcrumb></div>
 		<div ui-view="main" class="container"></div>
 		<div ui-view="footer" ></div>
@@ -71,7 +77,9 @@
 		<script src="resources/js/core/controller/login-ctrl.js"></script>
 		<script src="resources/js/core/controller/register-ctrl.js"></script>
 		<script src="resources/js/core/controller/problem-ctrl.js"></script>
+		<script src="resources/js/core/controller/contest-ctrl.js"></script>
 		<script src="resources/js/core/service/user-service.js"></script>
 		<script src="resources/js/core/service/problem-service.js"></script>
+		<script src="resources/js/core/service/contest-service.js"></script>
 	</body>
 </html>

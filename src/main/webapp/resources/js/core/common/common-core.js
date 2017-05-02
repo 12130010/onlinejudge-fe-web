@@ -5,6 +5,7 @@
 var commonModule = angular.module('commonModule', [])
 .provider('commonService', function (){
 	this.urlMap = {
+			// USER MS
 			"USER_GET_USER_DETAIL" : {
 				"baseUrl" : "onlinejudge-ms-user/users?email={0}",
 				"params" : ["email"]
@@ -13,6 +14,7 @@ var commonModule = angular.module('commonModule', [])
 				"baseUrl" : "onlinejudge-ms-user/users",
 				"params" : []
 			},
+			// CONTEST MS - PROBLEM
 			"CONTEST_GET_ALL_PROBLEM" : {
 				"baseUrl" : "onlinejudge-ms-contest/problems",
 				"params" : []
@@ -29,7 +31,16 @@ var commonModule = angular.module('commonModule', [])
 				"baseUrl" : "onlinejudge-ms-contest/problems/delete",
 				"params" : []
 			}
-			
+			// CONTEST MS - CONTEST
+			,
+			"CONTEST_GET_ALL_CONTEST" : {
+				"baseUrl" : "onlinejudge-ms-contest/contests",
+				"params" : []
+			},
+			"CONTEST_ADD_CONTEST" : {
+				"baseUrl" : "onlinejudge-ms-contest/contests",
+				"params" : []
+			}
 			
 	}
 	
