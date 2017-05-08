@@ -48,5 +48,24 @@ onlinejudgeApp.service('contestService', function($http, $q, $cookies, connector
 		
 		return deferred.promise;
 	}
+	ContestService.prototype.addTeamToContest = function addTeamToContest(contestID, team){
+		var self = this;
+		var deferred = $q.defer();
+		
+		connectorService.post(
+				{
+					actionName: "CONTEST_ADD_TEAM_CONTEST",
+					actionParams : [contestID],
+					data: team
+				}
+		).then(function success(response){
+			deferred.resolve(response);
+		}, function error(response){
+			deferred.reject(response);
+		});
+		return deferred.promise;
+
+	}
+	
 	return new ContestService();
 });

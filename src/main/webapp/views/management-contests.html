@@ -59,6 +59,8 @@
       	</td>
       	
       	<td>
+      		<a class="btn btn-primary" ng-click="createTeam(contest.id)">Add Team</a>
+      		<a class="btn btn-primary" ng-click="createProblemForContest(contest.id)">Add Problem</a>
       		<a class="btn btn-primary" ng-click="updateContest(contest.id)">Edit</a>
       	</td>
       	<td>
@@ -71,8 +73,8 @@
 	<dir-pagination-controls boundary-links="true" on-page-change="" template-url="views/dirPagination.tpl.html"></dir-pagination-controls>
 </div>
 
-  <!-- Modal -->
-  <div class="modal fade" id="myModal" role="dialog">
+  <!-- add contest -->
+<div class="modal fade" id="modalAddContest" role="dialog">
     <div class="modal-dialog">
     
       <!-- Modal content-->
@@ -181,7 +183,184 @@
           <button type="button" class="btn btn-default" ng-click="closeForm()">Close</button>
         </div>
       </div>
-      
-    </div>
+  </div>
+</div>
+
+  <!-- add Team -->
+<div class="modal fade" id="modalAddTeam" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" ng-click="closeForm()">&times;</button>
+          <h4 class="modal-title">Add new Team to Contest: {{contestSelected.shortName + " - " + contestSelected.longName}}</h4>
+        </div>
+        <div class="modal-body">
+			<div class="row main" style="margin: 0 15px;">
+				<div class="main-login main-center" style="max-width: 100%;">
+					<div class="form-group">
+						<label for="name" class="cols-sm-2 control-label">Team's name</label>
+						<div class="cols-sm-10">
+							<div class="input-group">
+								<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+								<input type="text" class="form-control" name="name" id="name"  placeholder="Team's name"
+								ng-model="team.name" required="required"/>
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="name" class="cols-sm-2 control-label">Member's email</label>
+						<div class="cols-sm-10">
+							<div class="input-group">
+								<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+								<ul>
+									<li ng-repeat="member in team.listMember">{{member.email}} | <a ng-click="deleteMember(member.email)" style="cursor: pointer;"> x</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<label for="name" class="cols-sm-2 control-label">Email of member</label>
+						<div class="cols-sm-10">
+							<div class="input-group">
+								<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+								<input type="email" class="form-control" name="name" id="name"  placeholder="Email"
+								ng-model="emailOfMember" required="required"/>
+								<button ng-click="addMember()" class="btn btn-success">Add member to team</button>
+							</div>
+						</div>
+					</div>
+					
+				</div> <!-- END main-login main-center -->
+			</div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" ng-click="addTeam()">Add team</button>
+          <button type="button" class="btn btn-default" ng-click="closeForm()">Close</button>
+        </div>
+      </div>
+  </div>
+</div>
+
+<!-- add ProblemForContest -->
+<div class="modal fade" id="modalAddProblemForContest" role="dialog">
+    <div class="modal-dialog" style="width: 700px;">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" ng-click="closeForm()">&times;</button>
+          <h4 class="modal-title">Add new Problem to Contest: {{contestSelected.shortName + " - " + contestSelected.longName}}</h4>
+        </div>
+        <div class="modal-body">
+			<div class="row main" style="margin: 0 15px;">
+				<div class="main-login main-center" style="max-width: 100%;">
+					<div class="form-group">
+						<label for="name" class="cols-sm-2 control-label">List problem</label>
+						<div class="cols-sm-10">
+							<div class="input-group">
+								<span class="input-group-addon" ><i class="fa fa-user fa" aria-hidden="true"></i></span>
+								<select size="6" ng-model="problemSelected" style="color: black;">
+									<option ng-repeat="problem in listProblem" ng-value="problem">{{problem.name}}</option>
+								</select>
+							</div>
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<label for="name" class="cols-sm-2 control-label">Original problem</label>
+						<div class="cols-sm-10">
+							<div class="input-group">
+								<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+								<input type="text" class="form-control" name="name" id="name"
+								ng-model="problemSelected.name" required="required" readonly="readonly"/>
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="name" class="cols-sm-2 control-label">Index</label>
+						<div class="cols-sm-10">
+							<div class="input-group">
+								<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+								<input type="number" class="form-control" name="name" id="name"  placeholder="Email"
+								ng-model="problemForContest.index" required="required"/>
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="name" class="cols-sm-2 control-label">Display Name</label>
+						<div class="cols-sm-10">
+							<div class="input-group">
+								<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+								<input type="text" class="form-control" name="name" id="name"  placeholder="Display name"
+								ng-model="problemForContest.nameDisplay" required="required"/>
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="name" class="cols-sm-2 control-label">Color</label>
+						<div class="cols-sm-10">
+							<div class="input-group">
+								<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+								<input type="text" class="form-control" name="name" id="name"  placeholder="Color"
+								ng-model="problemForContest.color" required="required"/>
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="name" class="cols-sm-2 control-label">Score</label>
+						<div class="cols-sm-10">
+							<div class="input-group">
+								<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+								<input type="number" class="form-control" name="name" id="name"  placeholder="Email"
+								ng-model="problemForContest.score" required="required"/>
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="name" class="cols-sm-2 control-label">Score</label>
+						<div class="cols-sm-10">
+							<div class="input-group">
+								<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+								<button ng-click="addNewProblemForContest()">{{isEditing ? "Update problem" : "Add problem" }}</button> 
+							</div>
+						</div>
+					</div>
+					
+				</div> <!-- END main-login main-center -->
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+							<th>Index</th>
+							<th>Original Name</th>
+							<th>Display name</th>
+							<th>Color</th>
+							<th>Score</th>
+							<th>Action</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="problemForContest in listProblemForContest track by $index">
+							<td>{{problemForContest.index}}</td>
+							<td>{{problemForContest.problem.name}}</td>
+							<td>{{problemForContest.nameDisplay}}</td>
+							<td>{{problemForContest.color}}</td>
+							<td>{{problemForContest.score}}</td>
+							<td>
+								<button ng-click="editProblemForContest($index)">Update</button>
+								<button ng-click="removeProblemForContest($index)">Delete</button>
+							</td>
+						</tr>
+					</tbody>
+				</table>	
+			</div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" ng-click="addTeam()">Update team</button>
+          <button type="button" class="btn btn-default" ng-click="closeForm()">Close</button>
+        </div>
+      </div>
   </div>
 </div>

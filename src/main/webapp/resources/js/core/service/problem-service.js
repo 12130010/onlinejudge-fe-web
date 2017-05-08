@@ -4,6 +4,7 @@ onlinejudgeApp.service('problemService', function($http, $q, $cookies, connector
 		this.listProblem = [];
 	}
 	
+	//Get list problem was created by curruent user login.
 	ProblemService.prototype.getListProblem = function getListProblem(){
 		var self = this;
 		var deferred = $q.defer();

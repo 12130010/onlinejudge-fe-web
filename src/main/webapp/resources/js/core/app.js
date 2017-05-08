@@ -111,7 +111,7 @@ onlinejudgeApp.config(['$stateProvider', '$urlRouterProvider', function($statePr
 ])
 .config(['OAuthProvider', function(OAuthProvider) {
     OAuthProvider.configure({
-      baseUrl: 'http://localhost:4000/onlinejudge-ifa-oauth',
+      baseUrl: baseURL + 'onlinejudge-ifa-oauth',
       clientId: 'browser',
       scope : 'ui',
       Authorization:'Basic YnJvd3Nlcjo=',
