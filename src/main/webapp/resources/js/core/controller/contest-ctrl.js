@@ -21,6 +21,8 @@ var contestController = function ($state, $scope, commonService, contestService,
 		$('#modalAddContest').modal('hide');
 		$('#modalAddTeam').modal('hide');
 		$('#modalAddProblemForContest').modal('hide');
+		$('#modalShowListProblemForContest').modal('hide');
+		$('#modalShowListTeam').modal('hide');
 		contestService.getListContest();
 	}
 	
@@ -111,6 +113,18 @@ var contestController = function ($state, $scope, commonService, contestService,
 		});
 	}
 	
+	$scope.showListTeam = function showListTeam(contestID){
+		$scope.contestIDSelected = contestID;
+		$scope.contestSelected = findContestById(contestID);
+		
+		$scope.listTeam = $scope.contestSelected.listTeam;
+		$('#modalShowListTeam').modal('show');
+	}
+	
+	/*
+	 *----------END Team ------------- 
+	 */
+	
 	
 	/*
 	 * ---------------- Problem ----------------
@@ -194,6 +208,18 @@ var contestController = function ($state, $scope, commonService, contestService,
 			alert("Add team fail!");
 		});
 	}
+	
+	$scope.showListProblemForContest = function showListProblemForContest(contestID){
+		$scope.contestIDSelected = contestID;
+		$scope.contestSelected = findContestById(contestID);
+		
+		$scope.listProblemForContest = $scope.contestSelected.listProblem;
+		$('#modalShowListProblemForContest').modal('show');
+	}
+	
+	/*
+	 * ----------------END Problem ----------------
+	 */
 	
 	/*
 	 * Common function

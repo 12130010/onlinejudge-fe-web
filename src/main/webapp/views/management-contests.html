@@ -28,7 +28,7 @@
     <tbody>
       <tr dir-paginate="contest in listContest | itemsPerPage: pageSize">
       	<td>
-      		{{contest.shortName}}
+      		<a ng-click="showListProblemForContest(contest.id)" style="cursor: pointer;">{{contest.shortName}}</a>
       	</td>
       	<td>
       		{{contest.longName}}
@@ -52,10 +52,10 @@
       		{{contest.numberMemPerTeam}}
       	</td>
       	<td>
-      		{{contest.listProblem.length}}
+      		<a ng-click="showListProblemForContest(contest.id)" style="cursor: pointer;">{{contest.listProblem.length}}</a>
       	</td>
       	<td>
-      		{{contest.listTeam.length}}
+      		<a ng-click="showListTeam(contest.id)" style="cursor: pointer;">{{contest.listTeam.length}}</a>
       	</td>
       	
       	<td>
@@ -359,6 +359,93 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-success" ng-click="updateProblemForContest()">Update Problem</button>
+          <button type="button" class="btn btn-default" ng-click="closeForm()">Close</button>
+        </div>
+      </div>
+  </div>
+</div>
+
+<!-- Show list ProblemForContest -->
+<div class="modal fade" id="modalShowListProblemForContest" role="dialog">
+    <div class="modal-dialog" style="width: 700px;">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" ng-click="closeForm()">&times;</button>
+          <h4 class="modal-title">List Problem of Contest: {{contestSelected.shortName + " - " + contestSelected.longName}}</h4>
+        </div>
+        <div class="modal-body">
+			<div class="row main" style="margin: 0 15px;">
+				<div class="main-login main-center" style="max-width: 100%;">
+					<table class="table table-bordered">
+						<thead>
+							<tr>
+								<th>Index</th>
+								<th>Original Name</th>
+								<th>Display name</th>
+								<th>Color</th>
+								<th>Score</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="problemForContest in listProblemForContest track by $index">
+								<td>{{problemForContest.index}}</td>
+								<td>{{problemForContest.problem.name}}</td>
+								<td>{{problemForContest.nameDisplay}}</td>
+								<td>{{problemForContest.color}}</td>
+								<td>{{problemForContest.score}}</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" ng-click="closeForm()">Close</button>
+        </div>
+      </div>
+  </div>
+</div>
+
+
+<!-- Show list Team -->
+<div class="modal fade" id="modalShowListTeam" role="dialog">
+    <div class="modal-dialog" style="width: 700px;">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" ng-click="closeForm()">&times;</button>
+          <h4 class="modal-title">List team of Contest: {{contestSelected.shortName + " - " + contestSelected.longName}}</h4>
+        </div>
+        <div class="modal-body">
+			<div class="row main" style="margin: 0 15px;">
+				<div class="main-login main-center" style="max-width: 100%;">
+					<table class="table table-bordered">
+						<thead>
+							<tr>
+								<th>Index</th>
+								<th>Team's Name</th>
+								<th>Member</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="team in listTeam track by $index">
+								<td>{{$index + 1}}</td>
+								<td>{{team.name}}</td>
+								<td>
+									<ul>
+										<li ng-repeat="member in team.listMember">{{member.email}}</li>
+									</ul>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+        </div>
+        <div class="modal-footer">
           <button type="button" class="btn btn-default" ng-click="closeForm()">Close</button>
         </div>
       </div>
