@@ -47,6 +47,12 @@ var commonModule = angular.module('commonModule', [])
 				"baseUrl" : "onlinejudge-ms-contest/contests/{0}/addteam",
 				"params" : ["contestID"]
 			}
+			// CONTEST MS - PROBLEM
+			,
+			"CONTEST_UPDATE_PROBLEM_CONTEST" : {
+				"baseUrl" : "onlinejudge-ms-contest/contests/{0}/problems",
+				"params" : ["contestID"]
+			}
 	}
 	
 	this.CONSTANTS = {

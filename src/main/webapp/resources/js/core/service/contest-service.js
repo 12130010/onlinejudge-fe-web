@@ -66,6 +66,24 @@ onlinejudgeApp.service('contestService', function($http, $q, $cookies, connector
 		return deferred.promise;
 
 	}
+	ContestService.prototype.updateProblemToContest = function updateProblemToContest(contestID, problems){
+		var self = this;
+		var deferred = $q.defer();
+		
+		connectorService.post(
+				{
+					actionName: "CONTEST_UPDATE_PROBLEM_CONTEST",
+					actionParams : [contestID],
+					data: problems
+				}
+		).then(function success(response){
+			deferred.resolve(response);
+		}, function error(response){
+			deferred.reject(response);
+		});
+		return deferred.promise;
+		
+	}
 	
 	return new ContestService();
 });

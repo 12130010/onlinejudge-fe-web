@@ -126,7 +126,8 @@ var contestController = function ($state, $scope, commonService, contestService,
 			score: 0,
 			nameDisplay: "",
 	};
-
+	
+	//show modal
 	$scope.createProblemForContest = function createProblemForContest(contestID){
 		$scope.contestIDSelected = contestID;
 		$scope.contestSelected = findContestById(contestID);
@@ -148,6 +149,7 @@ var contestController = function ($state, $scope, commonService, contestService,
 		$scope.isEditing = false;
 	}
 	
+	// add new problemForContest into listProblemForContest
 	$scope.addNewProblemForContest = function addNewProblemForContest(){
 		//copy problem's id to problemForContest's id
 		if($scope.problemSelected == undefined){
@@ -170,6 +172,7 @@ var contestController = function ($state, $scope, commonService, contestService,
 		$scope.problemSelected = undefined;
 	}
 	
+	// remove problemForContest from listProblemForContest
 	$scope.removeProblemForContest = function removeProblemForContest(index){
 		var problemForContest = $scope.listProblemForContest[index];
 		if (confirm('Are you sure you want to delete problem with name: ' + problemForContest.nameDislay + "?")) {
@@ -180,6 +183,16 @@ var contestController = function ($state, $scope, commonService, contestService,
 	$scope.editProblemForContest = function editProblemForContest(index){
 		$scope.problemForContest = $scope.listProblemForContest[index];
 		$scope.isEditing = true;
+	}
+	
+	//Send data to server. Replace old listProblemForContest by new one.
+	$scope.updateProblemForContest = function updateProblemForContest(){
+		contestService.updateProblemToContest($scope.contestIDSelected, $scope.listProblemForContest).then(function success(){
+			alert("Add team success!");
+			$scope.closeForm();
+		}, function fail(){
+			alert("Add team fail!");
+		});
 	}
 	
 	/*
