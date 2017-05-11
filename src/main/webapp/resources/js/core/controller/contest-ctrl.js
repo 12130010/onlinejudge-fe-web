@@ -57,7 +57,7 @@ var contestController = function ($state, $scope, commonService, contestService,
 	$scope.deleteContest = function deleteContest(contestID){
 		var contestData = findContestById(contestID);
 		if (confirm('Are you sure you want to delete contest with name: ' + contestData.shortName + " - " + contestData.longName + "?")) {
-			contestService.deleteContest(contestData).then(function success(){
+			contestService.deleteContest(contestID).then(function success(){
 				alert("Delete success!")
 				contestService.getListContest();
 			}, function fail(response){

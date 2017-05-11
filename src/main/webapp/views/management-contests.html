@@ -28,7 +28,7 @@
     <tbody>
       <tr dir-paginate="contest in listContest | itemsPerPage: pageSize">
       	<td>
-      		<a ng-click="showListProblemForContest(contest.id)" style="cursor: pointer;">{{contest.shortName}}</a>
+      		{{contest.shortName}}
       	</td>
       	<td>
       		{{contest.longName}}
