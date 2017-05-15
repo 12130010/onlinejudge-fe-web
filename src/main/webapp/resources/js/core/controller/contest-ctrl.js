@@ -113,6 +113,24 @@ var contestController = function ($state, $scope, commonService, contestService,
 		});
 	}
 	
+	$scope.deleteTeam = function deleteTeam(teamId){
+		if (confirm('Are you sure you want to delete team?')) {
+			contestService.deleteTeamInContest($scope.contestIDSelected, teamId).then(function success(){
+				alert("Delete team success!");
+				contestService.getListContest().then(function success(){
+					//delete all team in current list, after that, add again
+					$scope.listTeam.splice(0, $scope.listTeam.length);
+					$scope.contestSelected = findContestById($scope.contestIDSelected);
+//					$scope.listTeam.concat($scope.contestSelected.listTeam);
+					
+					$scope.listTeam.push.apply($scope.listTeam, $scope.contestSelected.listTeam);
+				});
+			}, function fail(){
+				alert("Delete team fail!");
+			});
+		}
+	}
+	
 	$scope.showListTeam = function showListTeam(contestID){
 		$scope.contestIDSelected = contestID;
 		$scope.contestSelected = findContestById(contestID);

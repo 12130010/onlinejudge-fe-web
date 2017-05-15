@@ -428,6 +428,7 @@
 								<th>Index</th>
 								<th>Team's Name</th>
 								<th>Member</th>
+								<th>Action</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -439,6 +440,7 @@
 										<li ng-repeat="member in team.listMember">{{member.email}}</li>
 									</ul>
 								</td>
+								<td><button ng-click="deleteTeam(team.id)">Delete</button></td>
 							</tr>
 						</tbody>
 					</table>

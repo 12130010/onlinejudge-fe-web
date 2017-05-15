@@ -66,6 +66,25 @@ onlinejudgeApp.service('contestService', function($http, $q, $cookies, connector
 		return deferred.promise;
 
 	}
+	ContestService.prototype.deleteTeamInContest = function deleteTeamInContest(contestID, teamID){
+		var self = this;
+		var deferred = $q.defer();
+		
+		connectorService.post(
+				{
+					actionName: "CONTEST_DELETE_TEAM_CONTEST",
+					actionParams : [contestID, teamID]
+				}
+		).then(function success(response){
+			deferred.resolve(response);
+		}, function error(response){
+			deferred.reject(response);
+		});
+		return deferred.promise;
+		
+	}
+	
+	
 	ContestService.prototype.updateProblemToContest = function updateProblemToContest(contestID, problems){
 		var self = this;
 		var deferred = $q.defer();

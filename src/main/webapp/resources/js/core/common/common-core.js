@@ -51,6 +51,11 @@ var commonModule = angular.module('commonModule', [])
 				"baseUrl" : "onlinejudge-ms-contest/contests/{0}/addteam",
 				"params" : ["contestID"]
 			}
+			,
+			"CONTEST_DELETE_TEAM_CONTEST" : {
+				"baseUrl" : "onlinejudge-ms-contest//contest/{0}/delete_team/{1}",
+				"params" : ["contestID","teamID"]
+			}
 			// CONTEST MS - PROBLEM
 			,
 			"CONTEST_UPDATE_PROBLEM_CONTEST" : {
