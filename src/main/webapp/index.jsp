@@ -48,27 +48,29 @@
 				</div>
 			</div>
 		</div>
-		<nav class="navbar navbar-inverse">
-		  <div class="container-fluid">
-		    <div class="navbar-header">
-		      <a class="navbar-brand" href="#">WebSiteName</a>
-		    </div>
-		    <div ui-view="menu" ></div>
-		    <ul class="nav navbar-nav navbar-right" ng-if="!isAuthenticated()">
-		      <li><a ui-sref="register"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-		      <li><a ui-sref="login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-		    </ul>
-		    <div ng-if="isAuthenticated()">
-			    <ul class="nav navbar-nav navbar-right" >
-			      <li><a><span class="glyphicon glyphicon-user"></span> Hello {{userDetail.displayName}}</a></li>
-			      <li><a ng-click="logout()" style="cursor: pointer;"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+		<div class="container">
+			<nav class="navbar navbar-inverse">
+			  <div class="container-fluid">
+			    <div class="navbar-header">
+			      <a class="navbar-brand" href="#">WebSiteName</a>
+			    </div>
+			    <div ui-view="menu" ></div>
+			    <ul class="nav navbar-nav navbar-right" ng-if="!isAuthenticated()">
+			      <li><a ui-sref="register"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+			      <li><a ui-sref="login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
 			    </ul>
-		    </div>
-		  </div>
-		</nav>
-		<div ncy-breadcrumb></div>
-		<div ui-view="main" class="container"></div>
-		<div ui-view="footer" ></div>
+			    <div ng-if="isAuthenticated()">
+				    <ul class="nav navbar-nav navbar-right" >
+				      <li><a><span class="glyphicon glyphicon-user"></span> Hello {{userDetail.displayName}}</a></li>
+				      <li><a ng-click="logout()" style="cursor: pointer;"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+				    </ul>
+			    </div>
+			  </div>
+			</nav>
+			<div ncy-breadcrumb></div>
+			<div ui-view="main" class="container"></div>
+			<div ui-view="footer" ></div>
+		</div>
 		
 		<script src="resources/js/core/config/config.js"></script>
 		<script src="resources/js/core/common/common-core.js"></script>
@@ -78,6 +80,7 @@
 		<script src="resources/js/core/controller/register-ctrl.js"></script>
 		<script src="resources/js/core/controller/problem-ctrl.js"></script>
 		<script src="resources/js/core/controller/contest-ctrl.js"></script>
+		<script src="resources/js/core/controller/student-contest-ctrl.js"></script>
 		<script src="resources/js/core/service/user-service.js"></script>
 		<script src="resources/js/core/service/problem-service.js"></script>
 		<script src="resources/js/core/service/contest-service.js"></script>

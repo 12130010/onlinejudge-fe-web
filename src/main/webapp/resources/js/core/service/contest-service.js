@@ -2,6 +2,8 @@
 onlinejudgeApp.service('contestService', function($http, $q, $cookies, connectorService) {
 	function ContestService(){
 		this.listContest = [];
+		this.listContestForUser = [];
+		this.detailContestForUser = {};
 	}
 	
 	ContestService.prototype.getListContest = function getListContest(){
@@ -119,6 +121,59 @@ onlinejudgeApp.service('contestService', function($http, $q, $cookies, connector
 		}, function error(response){
 			deferred.reject(response);
 		});
+		return deferred.promise;
+	}
+	
+	
+	/**
+	 * For end user
+	 */
+	ContestService.prototype.getListContestForUser = function getListContestForUser(){
+		var self = this;
+		var deferred = $q.defer();
+		
+		connectorService.get(
+				{
+					actionName: "CONTEST_USER_GET_ALL_CONTEST",
+					actionParams : []
+				}
+		).then(function success(response){
+			// clear all element in current listProblem
+			self.listContestForUser.splice(0, self.listContestForUser.length);
+			
+			//add new element to current listProblem
+			angular.forEach(response.data, function(value, key) {
+				  self.listContestForUser.push(value);
+			});
+			
+			deferred.resolve(self.listContestForUser);
+		}, function error(response){
+			deferred.reject(response);
+		});
+		
+		return deferred.promise;
+	}
+	
+	ContestService.prototype.getContestDetailForUser = function getContestDetailForUser(contestID){
+		var self = this;
+		var deferred = $q.defer();
+		
+		if(self.detailContestForUser.id != contestID){
+			connectorService.get(
+					{
+						actionName: "CONTEST_USER_GET_DETAIL_CONTEST",
+						actionParams : [contestID]
+					}
+			).then(function success(response){
+				angular.extend(self.detailContestForUser, response.data);
+				deferred.resolve(self.detailContestForUser);
+			}, function error(response){
+				deferred.reject(response);
+			});
+		}else{
+			deferred.resolve(self.detailContestForUser);
+		}
+		
 		return deferred.promise;
 	}
 	

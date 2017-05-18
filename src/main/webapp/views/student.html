@@ -1,0 +1,56 @@
+<h1>List contest</h1>
+<div class="col-xs-12">
+	<div class="col-xs-4 pull-right">
+	  <label for="search">items per page:</label>
+	  <input type="number" min="1" max="100" class="form-control" ng-model="pageSize">
+	</div>
+</div>
+ <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Short name</th>
+        <th>Long name</th>
+        <th>Description</th>
+        <th>Start date</th>
+        <th>Freeze date</th>
+        <th>End date</th>
+        <th>Number member / per team</th>
+        <th>Number problem</th>
+        <th>Number team</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr dir-paginate="contest in listContestForUser | itemsPerPage: pageSize">
+      	<td>
+      		<a ui-sref="student.contest({contestID: contest.id})">{{contest.shortName}}</a>
+      	</td>
+      	<td>
+      		{{contest.longName}}
+      	</td>
+      	<td>
+      		{{contest.description}}
+      	</td>
+      	<td>
+      		{{contest.startDate | date: 'dd/MM/yyyy hh:mm:ss'}}
+      	</td>
+      	<td>
+      		{{contest.freezeDate | date: 'dd/MM/yyyy hh:mm:ss'}}
+      	</td>
+      	<td>
+      		{{contest.endDate | date: 'dd/MM/yyyy hh:mm:ss'}}
+      	</td>
+      	<td>
+      		{{contest.numberMemPerTeam}}
+      	</td>
+      	<td>
+      		{{contest.listProblem.length}}
+      	</td>
+      	<td>
+      		{{contest.listTeam.length}}
+      	</td>
+      </tr>
+	</tbody>
+</table>
+ <div class="text-center">
+	<dir-pagination-controls boundary-links="true" on-page-change="" template-url="views/dirPagination.tpl.html"></dir-pagination-controls>
+</div>

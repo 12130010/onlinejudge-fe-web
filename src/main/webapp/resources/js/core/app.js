@@ -63,6 +63,51 @@ onlinejudgeApp.config(['$stateProvider', '$urlRouterProvider', function($statePr
 				label: 'Register'
 			}
 		})
+		.state('student', {
+			url: '/student',
+			views: {
+				'main@': {
+					templateUrl: 'views/student.html',
+					controller: studentContestController
+				},
+				'menu@': {
+					templateUrl: 'views/normal-menu.html'
+				}
+			},
+			ncyBreadcrumb: {
+				label: 'Student'
+			}
+		})
+		.state('student.contest', {
+			url: '/contest/:contestID',
+			views: {
+				'main@': {
+					templateUrl: 'views/student-contest.html',
+					controller: studentContestDetailController
+				},
+				'menu@': {
+					templateUrl: 'views/student-menu.html'
+				}
+			},
+			ncyBreadcrumb: {
+				label: 'Contest {{contest.shortName}}'
+			}
+		})
+		.state('student.contest.problems', {
+			url: '/problems',
+			views: {
+				'main@': {
+					templateUrl: 'views/student-problems.html',
+					controller: studentContestDetailController
+				},
+				'menu@': {
+					templateUrl: 'views/student-menu.html'
+				}
+			},
+			ncyBreadcrumb: {
+				label: 'Problems'
+			}
+		})
 		.state('management', {
 			url: '/management',
 			views: {

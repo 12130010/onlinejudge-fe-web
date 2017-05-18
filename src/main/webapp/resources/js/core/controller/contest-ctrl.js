@@ -119,10 +119,9 @@ var contestController = function ($state, $scope, commonService, contestService,
 				alert("Delete team success!");
 				contestService.getListContest().then(function success(){
 					//delete all team in current list, after that, add again
-					$scope.listTeam.splice(0, $scope.listTeam.length);
 					$scope.contestSelected = findContestById($scope.contestIDSelected);
-//					$scope.listTeam.concat($scope.contestSelected.listTeam);
 					
+					$scope.listTeam.splice(0, $scope.listTeam.length);
 					$scope.listTeam.push.apply($scope.listTeam, $scope.contestSelected.listTeam);
 				});
 			}, function fail(){
