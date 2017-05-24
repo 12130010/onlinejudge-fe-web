@@ -20,3 +20,14 @@ var studentContestDetailController = function ($state, $scope,$stateParams, comm
 	}
 	init();
 }
+/**
+ * 
+ */
+var studentContestBoardController = function ($state, $scope,$stateParams, commonService, contestService, problemService){
+	function init(){
+		$scope.contest = contestService.detailContestForUser;
+		
+		contestService.getContestDetailForUser($stateParams.contestID);
+	}
+	init();
+}

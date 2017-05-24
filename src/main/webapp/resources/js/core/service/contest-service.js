@@ -1,5 +1,5 @@
 'use strict';
-onlinejudgeApp.service('contestService', function($http, $q, $cookies, connectorService) {
+onlinejudgeApp.service('contestService', function($http, $q, $cookies, commonService, connectorService, orderByFilter) {
 	function ContestService(){
 		this.listContest = [];
 		this.listContestForUser = [];
@@ -165,7 +165,7 @@ onlinejudgeApp.service('contestService', function($http, $q, $cookies, connector
 						actionParams : [contestID]
 					}
 			).then(function success(response){
-				angular.extend(self.detailContestForUser, response.data);
+				angular.extend(self.detailContestForUser, calculateScoreAndRankTeam(response.data));
 				deferred.resolve(self.detailContestForUser);
 			}, function error(response){
 				deferred.reject(response);
@@ -175,6 +175,82 @@ onlinejudgeApp.service('contestService', function($http, $q, $cookies, connector
 		}
 		
 		return deferred.promise;
+	}
+	
+	function calculateScoreAndRankTeam(contest){
+		var listTeam = commonService.findElementInElement(contest, ["listTeam"]);
+		
+		addNumberProblemResolve(listTeam);
+		addTotalTimeToResolveForTeam(listTeam);
+		sortListTeamByScore(listTeam);
+		rankListTeamByScore(listTeam);
+		
+		return contest;
+	}
+	
+	function addTotalTimeToResolveForTeam(listTeam){
+		angular.forEach(listTeam, function (team){
+			team.totalTimeToResolve = calculateTotalTimeToResolve(team.listProblem);
+		});
+		
+		return listTeam;
+	}
+	
+	function calculateTotalTimeToResolve(listProblem){
+		var totalTimeToResolve = 0;
+		angular.forEach(listProblem, function(problemForTeam){
+			if(problemForTeam.resolve){
+				totalTimeToResolve += problemForTeam.timeResolve;
+			}
+		})
+		return totalTimeToResolve;
+	}
+	
+	function addNumberProblemResolve(listTeam){
+		angular.forEach(listTeam, function (team){
+			team.totalProblemResolve = calculateNumberProblemResolve(team.listProblem);
+		});
+		
+		return listTeam;
+	}
+	
+	function calculateNumberProblemResolve(listProblem){
+		var numberTestCaseResolve = 0;
+		angular.forEach(listProblem, function(problemForTeam){
+			if(problemForTeam.resolve){
+				numberTestCaseResolve++;
+			}
+		})
+		return numberTestCaseResolve;
+	}
+	
+	
+	function sortListTeamByScore(listTeam){
+		listTeam.sort(function comparator(team1, team2){
+			if(team1.totalProblemResolve != team2.totalProblemResolve){
+				//the team have totalProblemResolve greater than is first
+				return -(team1.totalProblemResolve - team2.totalProblemResolve); 
+			}else{
+				// otherwise (totalProblemResolve equals), if team have totalTimeToResolve less than is go first
+				return (team1.totalTimeToResolve - team2.totalTimeToResolve);
+			}
+		});
+	}
+	
+	function rankListTeamByScore(listTeam){
+		var rank = 0;
+		var previousTeam = undefined;
+		
+		angular.forEach(listTeam, function (team){
+			if(team.totalProblemResolve == 0 && previousTeam == undefined){
+				team.rank = 0;
+			}else if(previousTeam == undefined || (previousTeam.totalProblemResolve > team.totalProblemResolve)){
+				team.rank = ++rank;
+				previousTeam = team;
+			}else if(previousTeam.totalProblemResolve == team.totalProblemResolve){
+				team.rank = rank;
+			}
+		});
 	}
 	
 	return new ContestService();

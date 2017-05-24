@@ -108,6 +108,21 @@ onlinejudgeApp.config(['$stateProvider', '$urlRouterProvider', function($statePr
 				label: 'Problems'
 			}
 		})
+		.state('student.contest.board', {
+			url: '/board',
+			views: {
+				'main@': {
+					templateUrl: 'views/student-board.html',
+					controller: studentContestBoardController
+				},
+				'menu@': {
+					templateUrl: 'views/student-menu.html'
+				}
+			},
+			ncyBreadcrumb: {
+				label: 'Score board'
+			}
+		})
 		.state('management', {
 			url: '/management',
 			views: {

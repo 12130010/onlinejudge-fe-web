@@ -108,3 +108,10 @@ span.input-group-addon i {
 	font-size: 11px;
 	text-align: center;
 }
+
+.problem-resolve {
+	background-color: lightgreen;
+}
+.problem-not-resolve {
+	background-color: red;
+}

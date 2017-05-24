@@ -192,6 +192,44 @@ var commonModule = angular.module('commonModule', [])
 				des[k] = src[k];
 		};
 	}
+	
+	CommonService.prototype.findElementInElement = function(parent, elementsChain){
+		var self = this;
+		var ele = parent;
+		if (!self.hasValue(elementsChain)) return ele;
+		for ( var i = 0; i < elementsChain.length; i++) {
+			var eleName = elementsChain[i];
+			if (self.hasValue(ele)){
+				ele = self.findElement(eleName, ele);
+			}else{
+				var err = {};
+				var errChainNames = "$parent";
+				for ( var j = 0; j < i; j++) {
+					errChainNames += ("."+elementsChain[j]);
+				}
+				err.parent = parent;
+				err.elementsChain =  elementsChain;
+				err.message = "elementsChain got stuck (not found element or element is null: " + errChainNames;
+				throw err;
+			}
+		}
+		return ele;
+	};
+	
+	CommonService.prototype.findElement = function(eleName, element){
+		
+		for(var prop in element) {
+		     if(prop === eleName) {
+                return element[prop];
+            }
+            if(angular.isObject(element[prop])) {
+                var rs = this.findElement(eleName, element[prop]);
+                if (rs !== undefined)
+                    return rs;
+            }
+        }
+        return undefined;
+    };
 })
 .service('connectorService', ['$q', '$http', '$log', 'commonService', function($q, $http, $log, commonService) {
 		function ConnectorService() {
