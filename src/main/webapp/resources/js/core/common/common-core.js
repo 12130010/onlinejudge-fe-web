@@ -74,6 +74,19 @@ var commonModule = angular.module('commonModule', [])
 				"params" : ["contestId"]
 			}
 			
+			//RESOURCE
+			,
+			"RESOURCE_GENERATE_TOKEN" : {
+				"baseUrl" : "onlinejudge-ms-resources/generateToken",
+				"params" : []
+			}
+			,
+			"RESOURCE_GET_RESOURCE" : {
+				"baseUrl" : "onlinejudge-ms-resources/getResource?token={0}",
+				"params" : []
+			}
+			
+			
 	}
 	
 	this.CONSTANTS = {

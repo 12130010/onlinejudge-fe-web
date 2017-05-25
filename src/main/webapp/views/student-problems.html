@@ -1,3 +1,5 @@
 <ul>
-	<li ng-repeat="problem in contest.listProblem">{{problem.nameDisplay}}</li>
+	<li ng-repeat="problem in contest.listProblem">
+		<a ng-click="openProblem(problem)" style="cursor: pointer;">{{problem.nameDisplay}}</a>
+	</li>
 </ul>

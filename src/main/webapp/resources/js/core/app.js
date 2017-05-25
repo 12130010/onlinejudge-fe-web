@@ -98,7 +98,7 @@ onlinejudgeApp.config(['$stateProvider', '$urlRouterProvider', function($statePr
 			views: {
 				'main@': {
 					templateUrl: 'views/student-problems.html',
-					controller: studentContestDetailController
+					controller: studentContestProblemsController
 				},
 				'menu@': {
 					templateUrl: 'views/student-menu.html'
