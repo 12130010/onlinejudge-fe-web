@@ -115,3 +115,9 @@ span.input-group-addon i {
 .problem-not-resolve {
 	background-color: red;
 }
+.problem-text-resolve {
+	color: green;
+}
+.problem-text-not-resolve {
+	color: red;
+}

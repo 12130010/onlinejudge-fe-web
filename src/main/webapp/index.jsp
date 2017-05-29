@@ -84,5 +84,6 @@
 		<script src="resources/js/core/service/user-service.js"></script>
 		<script src="resources/js/core/service/problem-service.js"></script>
 		<script src="resources/js/core/service/contest-service.js"></script>
+		<script src="resources/js/core/service/team-service.js"></script>
 	</body>
 </html>

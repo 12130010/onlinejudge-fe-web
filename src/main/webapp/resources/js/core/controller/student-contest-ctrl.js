@@ -109,3 +109,17 @@ var studentContestProblemsController = function ($state, $scope,$stateParams, co
 	
 	init();
 }
+
+/**
+ * 
+ */
+var studentContestSubmitsController = function ($state, $scope,$stateParams, commonService, teamService ){
+	function init(){
+		$scope.team = teamService.teamDetail;
+		$scope.listSubmit = teamService.listSubmit;
+		
+		teamService.getTeamDetail($stateParams.contestID);
+	}
+	
+	init();
+}	
