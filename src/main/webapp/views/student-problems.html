@@ -1,5 +1,45 @@
-<ul>
-	<li ng-repeat="problem in contest.listProblem">
-		<a ng-click="openProblem(problem)" style="cursor: pointer;">{{problem.nameDisplay}}</a>
-	</li>
-</ul>
+<div class="col-xs-12">
+	<div class="col-xs-6">
+		<h1>List Problems</h1>
+		<ul>
+			<li ng-repeat="problem in contest.listProblem">
+				<a ng-click="openProblem(problem)" style="cursor: pointer;">{{problem.nameDisplay}}</a>
+			</li>
+		</ul>
+	</div>
+	<div class="col-xs-6">
+		<h1>Submit problem</h1>
+		<div class="main-login main-center" style="max-width: 100%;">
+			<div class="form-group">
+				<label for="name" class="cols-sm-2 control-label">Short name</label>
+				<div class="cols-sm-10">
+					<div class="input-group">
+						<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+						<input type="file" class="form-control" name="name" id="name"  placeholder="File" required="required"
+							file-model="submit.file"/>
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="name" class="cols-sm-2 control-label">Problem</label>
+				<div class="cols-sm-10">
+					<div class="input-group">
+						<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+						<select ng-model="submit.idProblemForTeam" style="color: black;">
+							<option ng-repeat="problem in contest.listProblem" ng-value="problem.id">{{problem.nameDisplay}}</option>
+						</select>
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="name" class="cols-sm-2 control-label">Problem</label>
+				<div class="cols-sm-10">
+					<div class="input-group">
+						<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+						<button ng-click="submitProblem()">Submit</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

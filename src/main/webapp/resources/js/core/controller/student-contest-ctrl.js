@@ -35,9 +35,10 @@ var studentContestBoardController = function ($state, $scope,$stateParams, commo
 /**
  * 
  */
-var studentContestProblemsController = function ($state, $scope,$stateParams, commonService, contestService, problemService, connectorService){
+var studentContestProblemsController = function ($state, $scope,$stateParams, commonService, contestService, problemService, userService, connectorService){
 	function init(){
 		$scope.contest = contestService.detailContestForUser;
+		$scope.submit = {};
 		
 		contestService.getContestDetailForUser($stateParams.contestID);
 	}
@@ -60,6 +61,50 @@ var studentContestProblemsController = function ($state, $scope,$stateParams, co
 		}, function error(response){
 			alert("Cannot access server! Please contact admin!");
 		});
+	}
+	
+	
+	/**
+	 * idContest: manual get
+	 * file: binding with UI
+	 * idProblemForTeam: binding with UI
+	 * idTeam: manual get
+	 */
+	$scope.submitProblem = function submitProblem(){
+		
+		var files = [];
+		
+		files.push({name:"file", file : $scope.submit.file});
+		files.push({name:"idContest", file : $scope.contest.id});
+		files.push({name:"idTeam", file : findTeamIdByEmailUserLogin()});
+		files.push({name:"idProblemForTeam", file :  $scope.submit.idProblemForTeam});
+		
+		connectorService.postResource(
+				{
+					actionName: "JUDGE_SUBMIT_PROBLEM",
+					actionParams : [],
+					data: files
+				}
+		).then(function success(response){
+			alert(response.data.status);
+			contestService.getContestDetailForUser($stateParams.contestID, true);
+			
+		}, function fail(response){
+			alert("Error. Please contact admin");
+		})
+	}
+	
+	function findTeamIdByEmailUserLogin(){
+		var idUser = userService.userDetail.id;
+		var idTeam;
+		angular.forEach(contestService.detailContestForUser.listTeam, function(team){
+			angular.forEach(team.listMember, function (user){
+				if(user.id == idUser ){
+					idTeam = team.id;
+				}
+			})
+		});
+		return idTeam;
 	}
 	
 	init();

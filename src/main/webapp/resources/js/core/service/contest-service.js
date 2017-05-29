@@ -154,11 +154,11 @@ onlinejudgeApp.service('contestService', function($http, $q, $cookies, commonSer
 		return deferred.promise;
 	}
 	
-	ContestService.prototype.getContestDetailForUser = function getContestDetailForUser(contestID){
+	ContestService.prototype.getContestDetailForUser = function getContestDetailForUser(contestID, forceReload){
 		var self = this;
 		var deferred = $q.defer();
 		
-		if(self.detailContestForUser.id != contestID){
+		if(forceReload || self.detailContestForUser.id != contestID){
 			connectorService.get(
 					{
 						actionName: "CONTEST_USER_GET_DETAIL_CONTEST",

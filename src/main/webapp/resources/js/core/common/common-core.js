@@ -83,8 +83,16 @@ var commonModule = angular.module('commonModule', [])
 			,
 			"RESOURCE_GET_RESOURCE" : {
 				"baseUrl" : "onlinejudge-ms-resources/getResource?token={0}",
+				"params" : ["token"]
+			}
+			
+			//JUDGE HOST
+			,
+			"JUDGE_SUBMIT_PROBLEM" : {
+				"baseUrl" : "/onlinejudge-ms-judge/submit",
 				"params" : []
 			}
+			
 			
 			
 	}
