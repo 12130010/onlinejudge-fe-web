@@ -41,6 +41,25 @@ var studentContestProblemsController = function ($state, $scope,$stateParams, co
 		$scope.submit = {};
 		
 		contestService.getContestDetailForUser($stateParams.contestID);
+		
+		//connect to chatBox
+		//TODO need to improve connect to server chatBox
+		var isConnectSuccess = false;
+		
+		var connectIntervalId = setInterval(() => {
+			console.log("try to connect to chat box server!");
+			if(!isConnectSuccess && contestService.detailContestForUser.listTeam){
+				var team = findTeamByEmailUserLogin();
+				name = team.name;
+				shortName = "T";
+				$('#frameChatBox').attr('src', chatBoxURL +"?name="  + name +"&shortName=" + shortName );
+				isConnectSuccess = true;
+			};
+			if(isConnectSuccess){
+				clearInterval(connectIntervalId);
+			};
+		}, 100);
+		
 	}
 	
 	$scope.openProblem = function openProblem(problemForContest){
@@ -105,6 +124,18 @@ var studentContestProblemsController = function ($state, $scope,$stateParams, co
 			})
 		});
 		return idTeam;
+	}
+	function findTeamByEmailUserLogin(){
+		var idUser = userService.userDetail.id;
+		var result;
+		angular.forEach(contestService.detailContestForUser.listTeam, function(team){
+			angular.forEach(team.listMember, function (user){
+				if(user.id == idUser ){
+					result = team;
+				}
+			})
+		});
+		return result;
 	}
 	
 	init();

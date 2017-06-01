@@ -117,6 +117,10 @@ onlinejudgeApp.config(['$stateProvider', '$urlRouterProvider', function($statePr
 				},
 				'menu@': {
 					templateUrl: 'views/student-menu.html'
+				},
+				'footer@': {
+					templateUrl: 'views/footer.html',
+					controller: studentContestProblemsController
 				}
 			},
 			ncyBreadcrumb: {
@@ -184,6 +188,15 @@ onlinejudgeApp.config(['$stateProvider', '$urlRouterProvider', function($statePr
 		})
 	}
 ])
+.config(function($sceDelegateProvider) {
+  $sceDelegateProvider.resourceUrlWhitelist([
+    'self',
+    'http://localhost:8180/chatboxapp/**'
+  ]);
+
+  $sceDelegateProvider.resourceUrlBlacklist([
+  ]);
+})
 .config(['OAuthProvider', function(OAuthProvider) {
     OAuthProvider.configure({
       baseUrl: baseURL + 'onlinejudge-ifa-oauth',
