@@ -27,6 +27,8 @@
 		<script src="resources/js/lib/angular-aria.js"></script>
 		<script src="resources/js/lib/angular-animate.js"></script>
 		<script src="resources/js/lib/angular-messages.js"></script>
+		<script src="resources/js/lib/angular-translate.js"></script>
+		<script src="resources/js/lib/angular-translate-loader-partial.js"></script>
 		
 	</head> 
 	<body ng-app="onlinejudgeApp" ng-controller="mainController">
@@ -67,6 +69,10 @@
 			    </div>
 			  </div>
 			</nav>
+			<div id="ctl00_Header1_ucLogout_dLog" class="logout" style="text-align: right;margin-bottom:0px;">
+			    <img src="resources/images/US.gif" alt="English" ng-click="changeLanguage('en')" id="imgUS" title="English" style="height: 20px;cursor: pointer;">
+			    <img src="resources/images/VI.gif" alt="Vietnamese" ng-click="changeLanguage('vi')" id="imgVi" title="Vietnamese" style="height: 20px;cursor: pointer;">
+			</div>
 			<div ncy-breadcrumb></div>
 			<div ui-view="main" class="container"></div>
 			<div ui-view="footer" ></div>

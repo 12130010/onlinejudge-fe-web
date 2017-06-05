@@ -14,7 +14,8 @@ var onlinejudgeApp = angular.module('onlinejudgeApp',
 							  'ncy-angular-breadcrumb',
 							  'commonModule',
 							  'angularUtils.directives.dirPagination',
-							  'ngMaterial'
+							  'ngMaterial',
+							  'pascalprecht.translate'
 							]);
 onlinejudgeApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
 		$urlRouterProvider.otherwise("/");
@@ -188,7 +189,7 @@ onlinejudgeApp.config(['$stateProvider', '$urlRouterProvider', function($statePr
 		})
 	}
 ])
-.config(function($sceDelegateProvider) {
+.config(function($sceDelegateProvider) { //TODO check whether it necesary or not.
   $sceDelegateProvider.resourceUrlWhitelist([
     'self',
     'http://localhost:8180/chatboxapp/**'
@@ -216,6 +217,14 @@ onlinejudgeApp.config(['$stateProvider', '$urlRouterProvider', function($statePr
 		 }
 	 });
  }])
+ .config(['$translateProvider', '$translatePartialLoaderProvider', function($translateProvider, $translatePartialLoaderProvider ) {
+	 $translatePartialLoaderProvider.addPart('full'); // no affect
+	 $translateProvider.useLoader('$translatePartialLoader', {
+		urlTemplate: 'resources/lang/{lang}.json'
+	 });
+	 $translateProvider.preferredLanguage('vi');
+ }])
+ 
 .run(['$rootScope', '$window', 'OAuth', '$state', function($rootScope, $window, OAuth, $state) {
 	
     $rootScope.$on('oauth:error', function(event, rejection) {
@@ -234,7 +243,7 @@ onlinejudgeApp.config(['$stateProvider', '$urlRouterProvider', function($statePr
       $state.go("login");
     });
  }])
- .controller('mainController', function($rootScope, $state, userService) {
+ .controller('mainController', function($rootScope, $scope, $state, userService,  $translatePartialLoader, $translate) {
 	 
 	 $rootScope.userDetail = userService.userDetail;
 	 
@@ -250,6 +259,9 @@ onlinejudgeApp.config(['$stateProvider', '$urlRouterProvider', function($statePr
 		return userService.isAuthenticated();
 	 }
 	 
+	 $scope.changeLanguage = function changeLanguage(lang){
+		 $translate.use(lang);
+	 }
 	 
 	 function init(){
 		 if(userService.isAuthenticated()){
