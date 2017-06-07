@@ -3,8 +3,8 @@
 	<div ui-view="main" ></div>
 	
 	<div ng-if="isAuthenticated()">
-		<a ui-sref="management">Management area</a>
+		<a ui-sref="management">{{'home.management' | translate}}</a>
 		||
-		<a ui-sref="student">Student area</a>
+		<a ui-sref="student">{{'home.student' | translate}}</a>
 	</div>
 </div>
