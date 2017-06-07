@@ -6,6 +6,10 @@ var commonModule = angular.module('commonModule', [])
 .provider('commonService', function (){
 	this.urlMap = {
 			// USER MS
+			"USER_CHECK_USER_IS_EXIST" : {
+				"baseUrl" : "onlinejudge-ms-user/checkUserIsExist?username={0}",
+				"params" : ["username"]
+			},
 			"USER_GET_USER_DETAIL" : {
 				"baseUrl" : "onlinejudge-ms-user/users?email={0}",
 				"params" : ["email"]

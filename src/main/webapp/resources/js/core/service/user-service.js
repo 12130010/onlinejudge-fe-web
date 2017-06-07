@@ -104,5 +104,23 @@ onlinejudgeApp.service('userService', function($http, $q, OAuth, $cookies, conne
 		
 		return deferred.promise; 
 	}
+	
+	UserService.prototype.checkUserIsExist = function checkUserIsExist(username){
+		var self = this;
+		var deferred = $q.defer();
+		
+		connectorService.get(
+				{
+					actionName: "USER_CHECK_USER_IS_EXIST",
+					actionParams : [username]
+				}
+		).then(function success(response){
+			deferred.resolve(response);
+		}, function error(response){
+			deferred.reject(response);
+		});
+		
+		return deferred.promise; 
+	}
 	return new UserService();
 });

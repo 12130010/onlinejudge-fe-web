@@ -30,4 +30,13 @@ var registerController = function ($state, $scope, commonService, userService){
 			}
 		});
 	}
+	
+	$scope.checkUserIsExist = function checkUserIsExist(username){
+		userService.checkUserIsExist(username).then(function success(response){
+			if(response.data.isExist === "true")
+				alert("Email " + username +" was used. Please choose another email!");
+		}, function fail(response){
+			alert("Error! Please contact admin! " + response.status);
+		});
+	}
 }
