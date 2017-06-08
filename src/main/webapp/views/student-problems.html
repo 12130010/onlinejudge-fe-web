@@ -1,6 +1,6 @@
 <div class="col-xs-12">
 	<div class="col-xs-6">
-		<h1>List Problems</h1>
+		<h1>{{'studentproblems.list.problem' | translate}}</h1>
 		<ul>
 			<li ng-repeat="problem in contest.listProblem">
 				<a ng-click="openProblem(problem)" style="cursor: pointer;">{{problem.nameDisplay}}</a>
@@ -8,10 +8,10 @@
 		</ul>
 	</div>
 	<div class="col-xs-6">
-		<h1>Submit problem</h1>
+		<h1>{{'studentproblems.submit.problem' | translate}}</h1>
 		<div class="main-login main-center" style="max-width: 100%;">
 			<div class="form-group">
-				<label for="name" class="cols-sm-2 control-label">Short name</label>
+				<label for="name" class="cols-sm-2 control-label">{{'studentproblems.short.name' | translate}}</label>
 				<div class="cols-sm-10">
 					<div class="input-group">
 						<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
@@ -21,7 +21,7 @@
 				</div>
 			</div>
 			<div class="form-group">
-				<label for="name" class="cols-sm-2 control-label">Problem</label>
+				<label for="name" class="cols-sm-2 control-label">{{'studentproblems.problem' | translate}}</label>
 				<div class="cols-sm-10">
 					<div class="input-group">
 						<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
@@ -32,11 +32,11 @@
 				</div>
 			</div>
 			<div class="form-group">
-				<label for="name" class="cols-sm-2 control-label">Problem</label>
+				<label for="name" class="cols-sm-2 control-label">{{'studentproblems.problem' | translate}}</label>
 				<div class="cols-sm-10">
 					<div class="input-group">
 						<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-						<button ng-click="submitProblem()">Submit</button>
+						<button ng-click="submitProblem()">{{'studentproblems.submit' | translate}}</button>
 					</div>
 				</div>
 			</div>
