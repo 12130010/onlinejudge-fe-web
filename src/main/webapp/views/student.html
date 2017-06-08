@@ -5,47 +5,57 @@
 	  <input type="number" min="1" max="100" class="form-control" ng-model="pageSize">
 	</div>
 </div>
- <table class="table table-bordered">
+ <table border="1" class="table table-bordered" style="width:100%; border-style: solid; border-collapse: collapse;">
     <thead>
-      <tr>
-        <th>Short name</th>
-        <th>Long name</th>
-        <th>Description</th>
-        <th>Start date</th>
-        <th>Freeze date</th>
-        <th>End date</th>
-        <th>Number member / per team</th>
-        <th>Number problem</th>
-        <th>Number team</th>
+      <tr bgcolor="#363636">
+        <th style="padding: 5px; text-align: center;">
+        <font color="#fff">Short name</font></th>
+        <th style="text-align: center;">
+        <font color="#fff">Long name</font></th>
+        <th style="text-align: center;">
+        <font color="#fff">Description</font></th>
+        <th style="text-align: center;">
+        <font color="#fff">Start date</font></th>
+        <th style="text-align: center;">
+        <font color="#fff">Freeze date</font></th>
+        <th style="text-align: center;">
+        <font color="#fff">End date</font></th>
+        <th style="text-align: center;">
+        <font color="#fff">Number member / per team</font></th>
+        <th style="text-align: center;">
+        <font color="#fff">Number problem</font></th>
+        <th style="text-align: center;">
+        <font color="#fff">Number team</font></th>
       </tr>
     </thead>
     <tbody>
       <tr dir-paginate="contest in listContestForUser | itemsPerPage: pageSize">
-      	<td>
-      		<a ui-sref="student.contest({contestID: contest.id})">{{contest.shortName}}</a>
+      	<td style="padding: 5px; text-align: center;">
+      		<a ui-sref="student.contest({contestID: contest.id})">			
+			{{contest.shortName}}</a>
       	</td>
-      	<td>
+      	<td style="text-align: center;">
       		{{contest.longName}}
       	</td>
-      	<td>
+      	<td style="text-align: center;">
       		{{contest.description}}
       	</td>
-      	<td>
+      	<td style="text-align: center;">
       		{{contest.startDate | date: 'dd/MM/yyyy hh:mm:ss'}}
       	</td>
-      	<td>
+      	<td style="text-align: center;">
       		{{contest.freezeDate | date: 'dd/MM/yyyy hh:mm:ss'}}
       	</td>
-      	<td>
+      	<td style="text-align: center;">
       		{{contest.endDate | date: 'dd/MM/yyyy hh:mm:ss'}}
       	</td>
-      	<td>
+      	<td style="text-align: center;">
       		{{contest.numberMemPerTeam}}
       	</td>
-      	<td>
+      	<td style="text-align: center;">
       		{{contest.listProblem.length}}
       	</td>
-      	<td>
+      	<td style="text-align: center;">
       		{{contest.listTeam.length}}
       	</td>
       </tr>
