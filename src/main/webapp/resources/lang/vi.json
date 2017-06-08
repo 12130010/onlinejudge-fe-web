@@ -1,3 +1,22 @@
 {
-	"home" :"Trang chủ"
+	"home" :"Trang chủ",
+	
+	"studentsubmits.list.submits" : "Danh sách bài đã nộp",
+	"studentsubmits.date.submit" : "Ngày nộp bài",
+	"studentsubmits.problem" : "Câu hỏi",
+	"studentsubmits.result" : "Kết quả",
+	"studentsubmits.time.run" : "Thời gian hoàn thành",
+	"studentproblems.list.problem" : "Danh sách câu hỏi",
+	"studentproblems.submit.problem" : "Gửi câu trả lời",
+	"studentproblems.short.name" : "Tên viết tắt",
+	"studentproblems.problem" : "Câu hỏi",
+	"studentproblems.submit" : "Gửi bài",
+	"studentmenu.home" : "Trang chủ",
+	"studentmenu.contest" : "Tất cả bài thi",
+	"studentmenu.board" : "Bảng xếp hạng",
+	"studentmenu.problem" : "Câu hỏi",
+	"studentmenu.submit" : "Gửi bài",
+	"studentboard.rank" : "Xếp hạng",
+	"studentboard.team" : "Nhóm",
+	"studentboard.score" : "Điểm",
 }

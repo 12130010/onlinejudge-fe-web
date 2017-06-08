@@ -1,3 +1,22 @@
 {
-	"home" :"Home"
+	"home" :"Home",
+	
+	"studentsubmits.list.submits" : "List submits",
+	"studentsubmits.date.submit" : "Date submit",
+	"studentsubmits.problem" : "Problem",
+	"studentsubmits.result" : "Result",
+	"studentsubmits.time.run" : "Time to run",
+	"studentproblems.list.problem" : "List problems",
+	"studentproblems.submit.problem" : "Submit problem",
+	"studentproblems.short.name" : "Short name",
+	"studentproblems.problem" : "Problem",
+	"studentproblems.submit" : "Submit",
+	"studentmenu.home" : "Home",
+	"studentmenu.contest" : "All Contests",
+	"studentmenu.board" : "Board",
+	"studentmenu.problem" : "Problems",
+	"studentmenu.submit" : "Submit",
+	"studentboard.rank" : "Rank",
+	"studentboard.team" : "Team",
+	"studentboard.score" : "Score",
 }
