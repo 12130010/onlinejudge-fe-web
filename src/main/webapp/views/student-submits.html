@@ -2,19 +2,23 @@
 <p>{{team.name}}</p>
 <table class="table table-bordered">
     <thead>
-      <tr>
-        <th style="width: 25%; white-space:nowrap;">Date submit</th>
-        <th style="width: 25%; white-space:nowrap;">Problem</th>
-        <th style="width: 25%; white-space:nowrap;">Result</th>
-        <th style="width: 25%; white-space:nowrap;">Time to run</th>
+      <tr bgcolor="#363636">
+        <th style="width: 25%; white-space:nowrap; padding: 5px; text-align: center;">
+		<font color="#fff">Date submit</font></th>
+        <th style="width: 25%; white-space:nowrap; text-align: center;">
+		<font color="#fff">Problem</font></th>
+        <th style="width: 25%; white-space:nowrap; text-align: center;">
+		<font color="#fff">Result</font></th>
+        <th style="width: 25%; white-space:nowrap; text-align: center;">
+		<font color="#fff">Time to run</font></th>
       </tr>
     </thead>
     <tbody>
       	<tr ng-repeat="submit in listSubmit">
-      		<td>{{submit.dateSubmit | date: 'dd/MM/yyyy hh:mm:ss'}}</td>
-      		<td>{{submit.problemName}}</td>
-      		<td ng-class="{'problem-text-resolve':submit.resolve, 'problem-text-not-resolve':!submit.resolve}">{{submit.status}}</td>
-      		<td>{{submit.timeToRun}}</td>
+      		<td style="padding: 5px; text-align: center;">{{submit.dateSubmit | date: 'dd/MM/yyyy hh:mm:ss'}}</td>
+      		<td style="text-align: center;">{{submit.problemName}}</td>
+      		<td style="text-align: center;" ng-class="{'problem-text-resolve':submit.resolve, 'problem-text-not-resolve':!submit.resolve}">{{submit.status}}</td>
+      		<td style="text-align: center;">{{submit.timeToRun}}</td>
       	</tr>
 	</tbody>
 </table>

@@ -1,18 +1,21 @@
 <h1>Score board</h1>
 <table class="table table-bordered">
     <thead>
-      <tr>
-        <th style="width: 5%;">Rank</th>
-        <th style="width: 25%; white-space:nowrap;">Team</th>
-        <th style="width:1%; white-space:nowrap;">Score</th>
+      <tr  bgcolor="#363636">
+        <th style="width: 5%; padding: 5px; text-align: center;">
+		<font color="#fff">Rank</font></th>
+        <th style="width: 25%; white-space:nowrap; text-align: center;">
+		<font color="#fff">Team</font></th>
+        <th style="width:1%; white-space:nowrap; text-align: center;">
+		<font color="#fff">Score</font></th>
         <th ng-repeat="problem in contest.listProblem" style="background-color: {{problem.color}};">{{problem.nameDisplay}}</th>
       </tr>
     </thead>
     <tbody>
       	<tr ng-repeat="team in contest.listTeam">
       		<td>{{team.rank}}</td>
-      		<td style="width:1%; white-space:nowrap;">{{team.name}}</td>
-      		<td style="width:1%; white-space:nowrap;">{{team.totalProblemResolve + " / " + team.totalTimeToResolve}}</td>
+      		<td style="width:1%; white-space:nowrap; padding: 5px; text-align: center;">{{team.name}}</td>
+      		<td style="width:1%; white-space:nowrap; text-align: center;">{{team.totalProblemResolve + " / " + team.totalTimeToResolve}}</td>
       		<td ng-repeat="problemForTeam in team.listProblem" ng-class="{'problem-resolve': problemForTeam.resolve, 'problem-not-resolve': problemForTeam.listSubmit.length != 0 && !problemForTeam.resolve}">{{problemForTeam.listSubmit.length}}</td>
       	</tr>
 	</tbody>
