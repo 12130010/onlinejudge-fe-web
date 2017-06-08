@@ -140,7 +140,7 @@ onlinejudgeApp.config(['$stateProvider', '$urlRouterProvider', function($statePr
 				}
 			},
 			ncyBreadcrumb: {
-				label: 'Score board'
+				label: 'List submits'
 			}
 		})
 		.state('management', {
