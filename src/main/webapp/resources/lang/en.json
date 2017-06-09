@@ -1,6 +1,7 @@
 {
 	"home" :"Home",
-	
+	"contest" : "Contest",
+	"team" : "Team",
 	"studentsubmits.list.submits" : "List submits",
 	"studentsubmits.date.submit" : "Date submit",
 	"studentsubmits.problem" : "Problem",
@@ -8,7 +9,7 @@
 	"studentsubmits.time.run" : "Time to run",
 	"studentproblems.list.problem" : "List problem",
 	"studentproblems.submit.problem" : "Submit problem",
-	"studentproblems.short.name" : "Short name",
+	"studentproblems.file" : "File",
 	"studentproblems.problem" : "Problem",
 	"studentproblems.submit" : "Submit",
 	"studentmenu.home" : "Home",
@@ -19,6 +20,7 @@
 	"studentboard.rank" : "Rank",
 	"studentboard.team" : "Team",
 	"studentboard.score" : "Score",
+	"studentboard.contest.detail" : "Detail",
 	"managementproblems.list.problem" : "List problem",
 	"managementproblems.add.problem" : "Add new Problem",
 	"managementproblems.item.per.page" : "items per page:",
@@ -36,7 +38,6 @@
 	"managementproblems.test.case.input" : "Test case input",
 	"managementproblems.test.case.output" : "Test case output",
 	"managementproblems.edit" : "Edit",
-	"managementproblems.delete" : "Delete",
 	"managementproblems.close" : "Close",
 	"student.list.contest" : "List contest",
 	"student.item.page" : "items per page:",

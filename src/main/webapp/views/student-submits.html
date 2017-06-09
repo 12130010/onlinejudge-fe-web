@@ -1,5 +1,7 @@
-<h1>{{'studentsubmits.list.submits' | translate}}</h1>
-<p>{{team.name}}</p>
+<h3>{{'contest' | translate}}: {{contest.longName}} <a ui-sref="student.contest({contestID: contest.id})" style="font-size: small;">{{'studentboard.contest.detail' | translate}}</a></h3>
+<h3>{{'team' | translate}}: {{team.name}}</h3>
+<hr style="width:100%"/>
+<h3 class="text-center">{{'studentsubmits.list.submits' | translate}}</h3>
 <table class="table table-bordered">
     <thead>
       <tr bgcolor="#363636">
