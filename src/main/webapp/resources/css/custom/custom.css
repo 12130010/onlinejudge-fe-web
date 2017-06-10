@@ -121,3 +121,11 @@ span.input-group-addon i {
 .problem-text-not-resolve {
 	color: red;
 }
+
+.navbar, .breadcrumb{
+    border-radius: 0px;
+ }
+
+#onlinejudgeApp td,#onlinejudgeApp th {
+ 	vertical-align: inherit
+ }

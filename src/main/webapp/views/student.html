@@ -1,51 +1,61 @@
-<h1>List contest</h1>
+<h1>{{'student.list.contest' | translate}}</h1>
 <div class="col-xs-12">
 	<div class="col-xs-4 pull-right">
-	  <label for="search">items per page:</label>
+	  <label for="search">{{'student.item.page' | translate}}</label>
 	  <input type="number" min="1" max="100" class="form-control" ng-model="pageSize">
 	</div>
 </div>
- <table class="table table-bordered">
+ <table class="table table-bordered" >
     <thead>
-      <tr>
-        <th>Short name</th>
-        <th>Long name</th>
-        <th>Description</th>
-        <th>Start date</th>
-        <th>Freeze date</th>
-        <th>End date</th>
-        <th>Number member / per team</th>
-        <th>Number problem</th>
-        <th>Number team</th>
+      <tr bgcolor="#363636">
+        <th style="padding: 5px; text-align: center;">
+        <font color="#fff">{{'student.short.name' | translate}}</font></th>
+        <th style="text-align: center;">
+        <font color="#fff">{{'student.long.name' | translate}}</font></th>
+        <th style="text-align: center;">
+        <font color="#fff">{{'student.description' | translate}}</font></th>
+        <th style="text-align: center;">
+        <font color="#fff">{{'student.start.date' | translate}}</font></th>
+        <th style="text-align: center;">
+        <font color="#fff">{{'student.freeze.date' | translate}}</font></th>
+        <th style="text-align: center;">
+        <font color="#fff">{{'student.end.date' | translate}}</font></th>
+        <th style="text-align: center;">
+        <font color="#fff">{{'student.member.per.team' | translate}}</font></th>
+        <th style="text-align: center;">
+        <font color="#fff">{{'student.number.problem' | translate}}</font></th>
+        <th style="text-align: center;">
+        <font color="#fff">{{'student.number.team' | translate}}</font></th>
       </tr>
     </thead>
     <tbody>
       <tr dir-paginate="contest in listContestForUser | itemsPerPage: pageSize">
-      	<td>
-      		<a ui-sref="student.contest({contestID: contest.id})">{{contest.shortName}}</a>
+      	<td style="padding: 5px; text-align: center;">
+      		<a ui-sref="student.contest({contestID: contest.id})">			
+			{{contest.shortName}}</a>
       	</td>
-      	<td>
+      	<td style="text-align: center;">
       		{{contest.longName}}
       	</td>
-      	<td>
+      	<td style="text-align: center;">
       		{{contest.description}}
       	</td>
-      	<td>
+      	<td style="text-align: center;">
       		{{contest.startDate | date: 'dd/MM/yyyy hh:mm:ss'}}
       	</td>
-      	<td>
+      	<td style="text-align: center;">
       		{{contest.freezeDate | date: 'dd/MM/yyyy hh:mm:ss'}}
       	</td>
-      	<td>
+      	<td style="text-align: center;">
       		{{contest.endDate | date: 'dd/MM/yyyy hh:mm:ss'}}
       	</td>
-      	<td>
+      	<td style="text-align: center;">
       		{{contest.numberMemPerTeam}}
       	</td>
-      	<td>
+      	<td style="text-align: center;">
       		{{contest.listProblem.length}}
       	</td>
-      	<td>
+      	<td style="text-align: center;">
       		{{contest.listTeam.length}}
       	</td>
       </tr>

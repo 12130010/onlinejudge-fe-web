@@ -3,8 +3,24 @@
 	<div ui-view="main" ></div>
 	
 	<div ng-if="isAuthenticated()">
-		<a ui-sref="management">{{'home.management' | translate}}</a>
-		||
-		<a ui-sref="student">{{'home.student' | translate}}</a>
+	<table >
+		<tbody>
+			<tr>
+				<td align="center">
+				<div><img src="https://html-online.com/img/04-replace.png" alt="html cleaner" /><br />
+				<h2>Management area</h2>
+				</div>
+				</td>
+				<td align="center">
+				||
+				</td>
+				<td align="center">
+				<div><img src="https://html-online.com/img/6-table-div-html.png" alt="html cleaner" /><br />
+				<h2>Student area</h2>
+				</div>
+				</td>
+			</tr>
+		</tbody>
+	</table>
 	</div>
 </div>

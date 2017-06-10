@@ -33,14 +33,16 @@ var studentContestBoardController = function ($state, $scope,$stateParams, commo
 }
 
 /**
- * 
+ * we have function connect to chatbox server in this controller.
  */
-var studentContestProblemsController = function ($state, $scope,$stateParams, commonService, contestService, problemService, userService, connectorService){
+var studentContestProblemsController = function ($state, $scope,$stateParams, commonService, contestService, problemService, userService, connectorService, teamService){
 	function init(){
 		$scope.contest = contestService.detailContestForUser;
 		$scope.submit = {};
+		$scope.team = teamService.teamDetail
 		
 		contestService.getContestDetailForUser($stateParams.contestID);
+		teamService.getTeamDetail($stateParams.contestID);
 		
 		//connect to chatBox
 		//TODO need to improve connect to server chatBox
@@ -144,11 +146,13 @@ var studentContestProblemsController = function ($state, $scope,$stateParams, co
 /**
  * 
  */
-var studentContestSubmitsController = function ($state, $scope,$stateParams, commonService, teamService ){
+var studentContestSubmitsController = function ($state, $scope,$stateParams, commonService, teamService, contestService ){
 	function init(){
 		$scope.team = teamService.teamDetail;
 		$scope.listSubmit = teamService.listSubmit;
+		$scope.contest = contestService.detailContestForUser;
 		
+		contestService.getContestDetailForUser($stateParams.contestID);
 		teamService.getTeamDetail($stateParams.contestID);
 	}
 	
