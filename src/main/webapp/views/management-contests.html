@@ -10,7 +10,7 @@
 </div>
  <table class="table table-bordered">
     <thead>
-      <tr>
+      <tr bgcolor="#363636" style="color: white;">
         <th>{{'student.short.name' | translate}}</th>
         <th>{{'student.long.name' | translate}}</th>
         <th>{{'student.description' | translate}}</th>
@@ -233,8 +233,8 @@
 			</div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-success" ng-click="addTeam()">{{'management.contests.delete' | translate}}Add team</button>
-          <button type="button" class="btn btn-default" ng-click="closeForm()">{{'management.contests.delete' | translate}}Close</button>
+          <button type="button" class="btn btn-success" ng-click="addTeam()">{{'managementcontest.add.team' | translate}}</button>
+          <button type="button" class="btn btn-default" ng-click="closeForm()">{{'management.contests.close' | translate}}</button>
         </div>
       </div>
   </div>
@@ -248,13 +248,13 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" ng-click="closeForm()">&times;</button>
-          <h4 class="modal-title">{{'management.contests.delete' | translate}}Add new Problem to Contest: {{contestSelected.shortName + " - " + contestSelected.longName}}</h4>
+          <h4 class="modal-title">{{'management.contests.add.problem.to.contest' | translate}} {{contestSelected.shortName + " - " + contestSelected.longName}}</h4>
         </div>
         <div class="modal-body">
 			<div class="row main" style="margin: 0 15px;">
 				<div class="main-login main-center" style="max-width: 100%;">
 					<div class="form-group">
-						<label for="name" class="cols-sm-2 control-label">{{'management.contests.delete' | translate}}List problem</label>
+						<label for="name" class="cols-sm-2 control-label">{{'management.contests.list.problem' | translate}}</label>
 						<div class="cols-sm-10">
 							<div class="input-group">
 								<span class="input-group-addon" ><i class="fa fa-user fa" aria-hidden="true"></i></span>
@@ -266,7 +266,7 @@
 					</div>
 					
 					<div class="form-group">
-						<label for="name" class="cols-sm-2 control-label">{{'management.contests.delete' | translate}}Original problem</label>
+						<label for="name" class="cols-sm-2 control-label">{{'management.contests.original.problem' | translate}}</label>
 						<div class="cols-sm-10">
 							<div class="input-group">
 								<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
@@ -276,7 +276,7 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="name" class="cols-sm-2 control-label">{{'management.contests.delete' | translate}}Index</label>
+						<label for="name" class="cols-sm-2 control-label">{{'management.contests.index' | translate}}</label>
 						<div class="cols-sm-10">
 							<div class="input-group">
 								<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
@@ -286,7 +286,7 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="name" class="cols-sm-2 control-label">{{'management.contests.delete' | translate}}Display Name</label>
+						<label for="name" class="cols-sm-2 control-label">{{'management.contests.display.name' | translate}}</label>
 						<div class="cols-sm-10">
 							<div class="input-group">
 								<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
@@ -296,7 +296,7 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="name" class="cols-sm-2 control-label">{{'management.contests.delete' | translate}}Color</label>
+						<label for="name" class="cols-sm-2 control-label">{{'management.contests.color' | translate}}</label>
 						<div class="cols-sm-10">
 							<div class="input-group">
 								<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
@@ -306,7 +306,7 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="name" class="cols-sm-2 control-label">{{'management.contests.delete' | translate}}Score</label>
+						<label for="name" class="cols-sm-2 control-label">{{'management.contests.score' | translate}}</label>
 						<div class="cols-sm-10">
 							<div class="input-group">
 								<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
@@ -316,11 +316,11 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="name" class="cols-sm-2 control-label">{{'management.contests.delete' | translate}}Score</label>
+						<label for="name" class="cols-sm-2 control-label">{{'management.contests.score' | translate}}</label>
 						<div class="cols-sm-10">
 							<div class="input-group">
 								<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-								<button ng-click="addNewProblemForContest()">{{isEditing ? {{'management.contests.delete' | translate}}"Update problem" : {{'management.contests.delete' | translate}}"Add problem" }}</button> 
+								<button ng-click="addNewProblemForContest()">{{isEditing ? 'management.contests.update.problem' : 'management.contests.add.problem' | translate }}</button> 
 							</div>
 						</div>
 					</div>
@@ -329,12 +329,12 @@
 				<table class="table table-bordered">
 					<thead>
 						<tr>
-							<th>{{'management.contests.delete' | translate}}Index</th>
-							<th>{{'management.contests.delete' | translate}}Original Name</th>
-							<th>{{'management.contests.delete' | translate}}Display name</th>
-							<th>{{'management.contests.delete' | translate}}Color</th>
-							<th>{{'management.contests.delete' | translate}}Score</th>
-							<th>{{'management.contests.delete' | translate}}Action</th>
+							<th>{{'management.contests.index' | translate}}Index</th>
+							<th>{{'management.contests.original.name' | translate}}</th>
+							<th>{{'management.contests.display.name' | translate}}</th>
+							<th>{{'management.contests.color' | translate}}</th>
+							<th>{{'management.contests.score' | translate}}</th>
+							<th>{{'management.contests.action' | translate}}</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -345,8 +345,8 @@
 							<td>{{problemForContest.color}}</td>
 							<td>{{problemForContest.score}}</td>
 							<td>
-								<button ng-click="editProblemForContest($index)">{{'management.contests.delete' | translate}}Update</button>
-								<button ng-click="removeProblemForContest($index)">{{'management.contests.delete' | translate}}Delete</button>
+								<button ng-click="editProblemForContest($index)">{{'management.contests.update.problem' | translate}}</button>
+								<button ng-click="removeProblemForContest($index)">{{'management.contests.delete' | translate}}</button>
 							</td>
 						</tr>
 					</tbody>
@@ -354,8 +354,8 @@
 			</div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-success" ng-click="updateProblemForContest()">{{'management.contests.delete' | translate}}Update Problem</button>
-          <button type="button" class="btn btn-default" ng-click="closeForm()">{{'management.contests.delete' | translate}}Close</button>
+          <button type="button" class="btn btn-success" ng-click="updateProblemForContest()">{{'management.contests.update.problem' | translate}}</button>
+          <button type="button" class="btn btn-default" ng-click="closeForm()">{{'management.contests.closes' | translate}}</button>
         </div>
       </div>
   </div>
@@ -369,7 +369,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" ng-click="closeForm()">&times;</button>
-          <h4 class="modal-title">{{'management.contests.delete' | translate}}List Problem of Contest: {{contestSelected.shortName + " - " + contestSelected.longName}}</h4>
+          <h4 class="modal-title">{{'management.contests.list.problem.of.contest' | translate}} {{contestSelected.shortName + " - " + contestSelected.longName}}</h4>
         </div>
         <div class="modal-body">
 			<div class="row main" style="margin: 0 15px;">
@@ -377,11 +377,11 @@
 					<table class="table table-bordered">
 						<thead>
 							<tr>
-								<th>{{'management.contests.delete' | translate}}Index</th>
-								<th>{{'management.contests.delete' | translate}}Original Name</th>
-								<th>{{'management.contests.delete' | translate}}Display name</th>
-								<th>{{'management.contests.delete' | translate}}Color</th>
-								<th>{{'management.contests.delete' | translate}}Score</th>
+								<th>{{'management.contests.index' | translate}}Index</th>
+								<th>{{'management.contests.original.name' | translate}}</th>
+								<th>{{'management.contests.display.name' | translate}}</th>
+								<th>{{'management.contests.color' | translate}}</th>
+								<th>{{'management.contests.score' | translate}}</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -398,7 +398,7 @@
 			</div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" ng-click="closeForm()">{{'management.contests.delete' | translate}}Close</button>
+          <button type="button" class="btn btn-default" ng-click="closeForm()">{{'management.contests.close' | translate}}Close</button>
         </div>
       </div>
   </div>
@@ -413,7 +413,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" ng-click="closeForm()">&times;</button>
-          <h4 class="modal-title">{{'management.contests.delete' | translate}}List team of Contest: {{contestSelected.shortName + " - " + contestSelected.longName}}</h4>
+          <h4 class="modal-title">{{'management.contests.list.team.of.contest' | translate}} {{contestSelected.shortName + " - " + contestSelected.longName}}</h4>
         </div>
         <div class="modal-body">
 			<div class="row main" style="margin: 0 15px;">
@@ -421,10 +421,10 @@
 					<table class="table table-bordered">
 						<thead>
 							<tr>
-								<th>{{'management.contests.delete' | translate}}Index</th>
-								<th>{{'management.contests.delete' | translate}}Team's Name</th>
-								<th>{{'management.contests.delete' | translate}}Member</th>
-								<th>{{'management.contests.delete' | translate}}Action</th>
+								<th>{{'management.contests.index' | translate}}</th>
+								<th>{{'management.contests.team.name' | translate}}</th>
+								<th>{{'management.contests.member' | translate}}</th>
+								<th>{{'management.contests.action' | translate}}</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -444,7 +444,7 @@
 			</div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" ng-click="closeForm()">{{'management.contests.delete' | translate}}Close</button>
+          <button type="button" class="btn btn-default" ng-click="closeForm()">{{'management.contests.close' | translate}}Close</button>
         </div>
       </div>
   </div>

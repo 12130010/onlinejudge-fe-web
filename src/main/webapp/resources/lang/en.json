@@ -107,5 +107,18 @@
 	"management.contests.add.new.team" :"Add new Team to Contest:",
 	"management.contests.team.name" :"Team's name",
 	"management.contests.add.member.email" :"Member's email",
-	"management.contests.email.of.member" :"Email of member"
+	"management.contests.email.of.member" :"Email of member",
+	"management.contests.add.problem.to.contest" : "Add new Problem to Contest:",
+	"management.contests.list.problem" : "List problem",
+	"management.contests.original.problem" : "Original problem",
+	"management.contests.index" : "Index",
+	"management.contests.display.name" : "Display name",
+	"management.contests.color" : "Color",
+	"management.contests.score" : "Score",
+	"management.contests.add.problem" : "Add problem",
+	"management.contests.update.problem" : "Update problem",
+	"management.contests.update.action" : "Action",
+	"management.contests.list.problem.of.contest" : "List problem of contest:",
+	"management.contests.list.team.of.contest" : "List team of Contest",
+	"management.contests.list.member" : "Member"
 }
