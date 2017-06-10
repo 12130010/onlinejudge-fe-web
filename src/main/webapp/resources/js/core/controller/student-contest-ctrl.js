@@ -33,7 +33,7 @@ var studentContestBoardController = function ($state, $scope,$stateParams, commo
 }
 
 /**
- * 
+ * we have function connect to chatbox server in this controller.
  */
 var studentContestProblemsController = function ($state, $scope,$stateParams, commonService, contestService, problemService, userService, connectorService, teamService){
 	function init(){

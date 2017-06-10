@@ -31,7 +31,7 @@
 		<script src="resources/js/lib/angular-translate-loader-partial.js"></script>
 		
 	</head> 
-	<body ng-app="onlinejudgeApp" ng-controller="mainController">
+	<body ng-app="onlinejudgeApp" ng-controller="mainController" id="onlinejudgeApp">
 		<div id="ipos-full-loading" class="ipos_popup_overlay" style="
 	    width: 100%;
 	    height: 100%;
@@ -54,17 +54,17 @@
 			<nav class="navbar navbar-inverse">
 			  <div class="container-fluid">
 			    <div class="navbar-header">
-			      <a class="navbar-brand" href="#">WebSiteName</a>
+			      <a class="navbar-brand" href="#">Online Judge</a>
 			    </div>
 			    <div ui-view="menu" ></div>
 			    <ul class="nav navbar-nav navbar-right" ng-if="!isAuthenticated()">
-			      <li><a ui-sref="register"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-			      <li><a ui-sref="login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+			      <li><a ui-sref="register"><span class="glyphicon glyphicon-user"></span> {{'signup' | translate}}</a></li>
+			      <li><a ui-sref="login"><span class="glyphicon glyphicon-log-in"></span> {{'login' | translate}}</a></li>
 			    </ul>
 			    <div ng-if="isAuthenticated()">
 				    <ul class="nav navbar-nav navbar-right" >
-				      <li><a><span class="glyphicon glyphicon-user"></span> Hello {{userDetail.displayName}}</a></li>
-				      <li><a ng-click="logout()" style="cursor: pointer;"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+				      <li><a><span class="glyphicon glyphicon-user"></span> {{'hello' | translate}} {{userDetail.displayName}}</a></li>
+				      <li><a ng-click="logout()" style="cursor: pointer;"><span class="glyphicon glyphicon-log-in"></span> {{ 'logout' | translate}}</a></li>
 				    </ul>
 			    </div>
 			  </div>

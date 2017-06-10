@@ -1,7 +1,7 @@
 <h3>{{'contest' | translate}}: {{contest.longName}} <a ui-sref="student.contest({contestID: contest.id})" style="font-size: small;">{{'studentboard.contest.detail' | translate}}</a></h3>
 <hr style="width:100%"/>
 <h2 class="text-center">{{'scoreboard' | translate}}</h2>
-<table class="table table-bordered">
+<table class="table table-bordered text-center">
     <thead>
       <tr  bgcolor="#363636">
         <th style="width: 5%; padding: 5px; text-align: center;">
@@ -10,7 +10,7 @@
 		<font color="#fff">{{'studentboard.team' | translate}}</font></th>
         <th style="width:1%; white-space:nowrap; text-align: center;">
 		<font color="#fff">{{'studentboard.score' | translate}}</font></th>
-        <th ng-repeat="problem in contest.listProblem" style="background-color: {{problem.color}};">{{problem.nameDisplay}}</th>
+        <th ng-repeat="problem in contest.listProblem" class="text-center" style="background-color: {{problem.color}};">{{problem.nameDisplay}}</th>
       </tr>
     </thead>
     <tbody>

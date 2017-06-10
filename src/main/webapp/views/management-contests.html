@@ -1,28 +1,27 @@
-<h1>List Contest</h1>
+<h1 class="text-center">{{'contests' | translate}}</h1>
 <div class="col-xs-12">
 	<div class="col-xs-4">
-		<a class="btn btn-primary" ng-click="createContest()">Add new Contest</a>
+		<a class="btn btn-primary" ng-click="createContest()">{{'managementcontest.add' | translate}}</a>
 	</div>
 	<div class="col-xs-4 pull-right">
-	  <label for="search">items per page:</label>
+	  <label for="search">{{'managementcontest.item.per.page' | translate}}:</label>
 	  <input type="number" min="1" max="100" class="form-control" ng-model="pageSize">
 	</div>
 </div>
  <table class="table table-bordered">
     <thead>
       <tr>
-        <th>Short name</th>
-        <th>Long name</th>
-        <th>Description</th>
-        <th>Start date</th>
-        <th>Freeze date</th>
-        <th>End date</th>
-        <th>Self register</th>
-        <th>Number member per team</th>
-        <th>Number problem</th>
-        <th>Number team</th>
-        <th>Update</th>
-        <th>Delete</th>
+        <th>{{'student.short.name' | translate}}</th>
+        <th>{{'student.long.name' | translate}}</th>
+        <th>{{'student.description' | translate}}</th>
+        <th>{{'student.start.date' | translate}}</th>
+        <th>{{'student.freeze.date' | translate}}</th>
+        <th>{{'student.end.date' | translate}}</th>
+        <th>{{'student.member.per.team' | translate}}</th>
+        <th>{{'student.number.problem' | translate}}</th>
+        <th>{{'student.number.team' | translate}}</th>
+        <th>{{'update' | translate}}</th>
+        <th>{{'delete' | translate}}</th>
       </tr>
     </thead>
     <tbody>
@@ -46,9 +45,6 @@
       		{{contest.endDate | date: 'dd/MM/yyyy hh:mm:ss'}}
       	</td>
       	<td>
-      		{{contest.selfRegister}}
-      	</td>
-      	<td>
       		{{contest.numberMemPerTeam}}
       	</td>
       	<td>
@@ -59,12 +55,12 @@
       	</td>
       	
       	<td>
-      		<a class="btn btn-primary" ng-click="createTeam(contest.id)">Add Team</a>
-      		<a class="btn btn-primary" ng-click="createProblemForContest(contest.id)">Add Problem</a>
-      		<a class="btn btn-primary" ng-click="updateContest(contest.id)">Edit</a>
+      		<a class="btn btn-primary" ng-click="createTeam(contest.id)">{{'managementcontest.add.team' | translate}}</a>
+      		<a class="btn btn-primary" ng-click="createProblemForContest(contest.id)">{{'managementcontest.add.problem' | translate}}</a>
+      		<a class="btn btn-primary" ng-click="updateContest(contest.id)">{{'edit' | translate}}</a>
       	</td>
       	<td>
-      		<a class="btn btn-danger" ng-click="deleteContest(contest.id)">Delete</a>
+      		<a class="btn btn-danger" ng-click="deleteContest(contest.id)">{{'delete' | translate}}</a>
       	</td>
       </tr>
 	</tbody>
@@ -81,14 +77,14 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" ng-click="closeForm()">&times;</button>
-          <h4 ng-if="!contest.id" class="modal-title">Add new contest</h4>
-          <h4 ng-if="contest.id" class="modal-title">Update contest</h4>
+          <h4 ng-if="!contest.id" class="modal-title">{{'managementcontest.add' | translate}}</h4>
+          <h4 ng-if="contest.id" class="modal-title">{{'managementcontest.update' | translate}}</h4>
         </div>
         <div class="modal-body">
 			<div class="row main" style="margin: 0 15px;">
 				<div class="main-login main-center" style="max-width: 100%;">
 					<div class="form-group">
-						<label for="name" class="cols-sm-2 control-label">Short name</label>
+						<label for="name" class="cols-sm-2 control-label">{{'student.short.name' | translate}}</label>
 						<div class="cols-sm-10">
 							<div class="input-group">
 								<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
@@ -98,7 +94,7 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="name" class="cols-sm-2 control-label">Long name</label>
+						<label for="name" class="cols-sm-2 control-label">{{'student.long.name' | translate}}</label>
 						<div class="cols-sm-10">
 							<div class="input-group">
 								<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
@@ -108,7 +104,7 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="name" class="cols-sm-2 control-label">Description</label>
+						<label for="name" class="cols-sm-2 control-label">{{'student.description' | translate}}</label>
 						<div class="cols-sm-10">
 							<div class="input-group">
 								<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
@@ -119,7 +115,7 @@
 					</div>
 					
 					<div class="form-group">
-						<label for="name" class="cols-sm-2 control-label">Start date: dd-mm-yyyy hh:mm:ss</label>
+						<label for="name" class="cols-sm-2 control-label">{{'student.start.date' | translate}}: dd-mm-yyyy hh:mm:ss</label>
 						<div class="cols-sm-10">
 							<div class="input-group">
 								<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
@@ -130,7 +126,7 @@
 					</div>
 					
 					<div class="form-group">
-						<label for="name" class="cols-sm-2 control-label">Freeze date: dd-mm-yyyy hh:mm:ss</label>
+						<label for="name" class="cols-sm-2 control-label">{{'student.freeze.date' | translate}}: dd-mm-yyyy hh:mm:ss</label>
 						<div class="cols-sm-10">
 							<div class="input-group">
 								<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
@@ -141,7 +137,7 @@
 					</div>
 					
 					<div class="form-group">
-						<label for="name" class="cols-sm-2 control-label">End date: dd-mm-yyyy hh:mm:ss</label>
+						<label for="name" class="cols-sm-2 control-label">{{'student.end.date' | translate}}: dd-mm-yyyy hh:mm:ss</label>
 						<div class="cols-sm-10">
 							<div class="input-group">
 								<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
@@ -152,7 +148,7 @@
 					</div>
 					
 					<div class="form-group">
-						<label for="name" class="cols-sm-2 control-label">Number member per team</label>
+						<label for="name" class="cols-sm-2 control-label">{{'student.member.per.team' | translate}}</label>
 						<div class="cols-sm-10">
 							<div class="input-group">
 								<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
@@ -162,25 +158,25 @@
 						</div>
 					</div>
 					
-					<div class="form-group">
-						<label for="name" class="cols-sm-2 control-label">Self register</label>
-						<div class="cols-sm-10">
-							<div class="input-group">
-								<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-								 <md-checkbox ng-model="contest.selfRegister">
-						           Self registry
-						         </md-checkbox>
-							</div>
-						</div>
-					</div>
+<!-- 					<div class="form-group"> -->
+<!-- 						<label for="name" class="cols-sm-2 control-label">Self register</label> -->
+<!-- 						<div class="cols-sm-10"> -->
+<!-- 							<div class="input-group"> -->
+<!-- 								<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span> -->
+<!-- 								 <md-checkbox ng-model="contest.selfRegister"> -->
+<!-- 						           Self registry -->
+<!-- 						         </md-checkbox> -->
+<!-- 							</div> -->
+<!-- 						</div> -->
+<!-- 					</div> -->
 					
 				</div>
 			</div>
         </div>
         <div class="modal-footer">
-          <button ng-if="!contest.id" type="button" class="btn btn-success" ng-click="saveContest()">Add contest</button>
-          <button ng-if="contest.id" type="button" class="btn btn-success" ng-click="saveContest()">Update contest</button>
-          <button type="button" class="btn btn-default" ng-click="closeForm()">Close</button>
+          <button ng-if="!contest.id" type="button" class="btn btn-success" ng-click="saveContest()">{{'managementcontest.add' | translate}}</button>
+          <button ng-if="contest.id" type="button" class="btn btn-success" ng-click="saveContest()">{{'managementcontest.update' | translate}}</button>
+          <button type="button" class="btn btn-default" ng-click="closeForm()">{{'managementcontest.close' | translate}}</button>
         </div>
       </div>
   </div>

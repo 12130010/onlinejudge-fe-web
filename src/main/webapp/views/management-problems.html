@@ -1,4 +1,4 @@
-<h1>{{'managementproblems.list.problem' | translate}}</h1>
+<h2 class="text-center">{{'managementproblems.list.problem' | translate}}</h2>
 <div class="col-xs-12">
 	<div class="col-xs-4">
 		<a class="btn btn-primary" ng-click="createProblem()">{{'managementproblems.add.problem' | translate}}</a>
@@ -8,17 +8,17 @@
 	  <input type="number" min="1" max="100" class="form-control" ng-model="pageSize">
 	</div>
 </div>
- <table class="table table-bordered">
+ <table class="table table-bordered text-center">
     <thead>
-      <tr>
-        <th>{{'managementproblems.name' | translate}}</th>
-        <th>{{'managementproblems.time.limit' | translate}}</th>
-        <th>{{'managementproblems.create.date' | translate}}</th>
-        <th>{{'managementproblems.modify.date' | translate}}</th>
-        <th>{{'managementproblems.version' | translate}}</th>
-        <th>{{'managementproblems.number.test.case' | translate}}</th>
-        <th>{{'managementproblems.update' | translate}}</th>
-        <th>{{'managementproblems.delete' | translate}}</th>
+      <tr >
+        <th class="text-center">{{'managementproblems.name' | translate}}</th>
+        <th class="text-center">{{'managementproblems.time.limit' | translate}}</th>
+        <th class="text-center">{{'managementproblems.create.date' | translate}}</th>
+        <th class="text-center">{{'managementproblems.modify.date' | translate}}</th>
+        <th class="text-center">{{'managementproblems.version' | translate}}</th>
+        <th class="text-center">{{'managementproblems.number.test.case' | translate}}</th>
+        <th class="text-center">{{'managementproblems.update' | translate}}</th>
+        <th class="text-center">{{'managementproblems.delete' | translate}}</th>
       </tr>
     </thead>
     <tbody>

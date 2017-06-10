@@ -31,7 +31,7 @@ onlinejudgeApp.config(['$stateProvider', '$urlRouterProvider', function($statePr
 				}
 			},
 			ncyBreadcrumb: {
-				label: 'Home'
+				label: "{{ 'home' | translate }}"
 			}
 		})
 		.state('login', {
@@ -46,7 +46,7 @@ onlinejudgeApp.config(['$stateProvider', '$urlRouterProvider', function($statePr
 				}
 			},
 			ncyBreadcrumb: {
-			    label: 'Login'
+			    label: "{{ 'login' | translate }}"
 			}
 		})
 		.state('register', {
@@ -61,7 +61,7 @@ onlinejudgeApp.config(['$stateProvider', '$urlRouterProvider', function($statePr
 				}
 			},
 			ncyBreadcrumb: {
-				label: 'Register'
+				label: "{{ 'signup' | translate }}"
 			}
 		})
 		.state('student', {
@@ -76,7 +76,7 @@ onlinejudgeApp.config(['$stateProvider', '$urlRouterProvider', function($statePr
 				}
 			},
 			ncyBreadcrumb: {
-				label: 'Student'
+				label: "{{ 'student' | translate }}"
 			}
 		})
 		.state('student.contest', {
@@ -88,10 +88,14 @@ onlinejudgeApp.config(['$stateProvider', '$urlRouterProvider', function($statePr
 				},
 				'menu@': {
 					templateUrl: 'views/student-menu.html'
+				},
+				'footer@': {
+					templateUrl: 'views/footer.html',
+					controller: studentContestProblemsController
 				}
 			},
 			ncyBreadcrumb: {
-				label: 'Contest {{contest.shortName}}'
+				label: "{{'contest' | translate}} {{contest.shortName}}"
 			}
 		})
 		.state('student.contest.problems', {
@@ -106,7 +110,7 @@ onlinejudgeApp.config(['$stateProvider', '$urlRouterProvider', function($statePr
 				}
 			},
 			ncyBreadcrumb: {
-				label: 'Problems'
+				label: "{{'problem' | translate}}"
 			}
 		})
 		.state('student.contest.board', {
@@ -125,7 +129,7 @@ onlinejudgeApp.config(['$stateProvider', '$urlRouterProvider', function($statePr
 				}
 			},
 			ncyBreadcrumb: {
-				label: 'Score board'
+				label: "{{'scoreboard' | translate}}"
 			}
 		})
 		.state('student.contest.submits', {
@@ -140,7 +144,7 @@ onlinejudgeApp.config(['$stateProvider', '$urlRouterProvider', function($statePr
 				}
 			},
 			ncyBreadcrumb: {
-				label: 'List submits'
+				label: "{{ 'studentmenu.submit' | translate }}"
 			}
 		})
 		.state('management', {
@@ -154,7 +158,7 @@ onlinejudgeApp.config(['$stateProvider', '$urlRouterProvider', function($statePr
 				}
 			},
 			ncyBreadcrumb: {
-				label: 'Management'
+				label: "{{ 'management' | translate }}"
 			}
 		})
 		.state('management.problems', {
@@ -169,7 +173,7 @@ onlinejudgeApp.config(['$stateProvider', '$urlRouterProvider', function($statePr
 				}
 			},
 			ncyBreadcrumb: {
-				label: 'Problems'
+				label: "{{ 'problem' | translate }}"
 			}
 		})
 		.state('management.contests', {
@@ -184,7 +188,7 @@ onlinejudgeApp.config(['$stateProvider', '$urlRouterProvider', function($statePr
 				}
 			},
 			ncyBreadcrumb: {
-				label: 'Contest'
+				label: "{{ 'contest' | translate }}"
 			}
 		})
 	}
