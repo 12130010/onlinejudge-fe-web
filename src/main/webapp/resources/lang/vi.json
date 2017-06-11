@@ -81,8 +81,10 @@
 	"footer.chat" :"Khung tán gẫu",	
 	"login.email" :"Thư điện tử",
 	"login.password" :"Mật khẩu",
-	"management.problems" :"Câu hỏi",
-	"management.contests" :"Cuộc thi",
+	"management.problems" :"Quản lý câu hỏi",
+	"management.problems.title" :"Tạo và cập nhật câu hỏi",
+	"management.contests" :"Quản lý cuộc thi",
+	"management.contests.title" :"Tạo và cập nhật cuộc thi",
 	"management.contests.list.contest" :"Danh sách bài thi",
 	"management.contests.add.new.contest" :"Thêm bài thi mới",
 	"management.contests.items.per.page" :"Số dòng:",
@@ -119,5 +121,9 @@
 	"management.contests.update.action" : "Thao tác",
 	"management.contests.list.problem.of.contest" : "Danh sách câu hỏi của cuộc thi:",
 	"management.contests.list.team.of.contest" : "Danh sách nhóm của cuộc thi",
-	"management.contests.list.member" : "Thành viên"
+	"management.contests.list.member" : "Thành viên",
+	"home.you.are.admin" : "Bạn là quản trị viên?",
+	"home.you.are.admin.go" : "Click vào đây để tạo và quản lý cuộc thi.",
+	"home.you.are.student" : "Bạn là thí sinh?",
+	"home.you.are.student.go" : "Click Vào đây để tham gia cuộc thi."
 }

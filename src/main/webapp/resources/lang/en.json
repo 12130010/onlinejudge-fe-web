@@ -82,8 +82,10 @@
 	"footer.chat" :"Chat",
 	"login.email" :"Your Email",
 	"login.password" :"Password",
-	"management.problem" :"Problems",
-	"management.contests" :"Contests",
+	"management.problems" :"Manage problem",
+	"management.problems.title" :"Create/update problem",
+	"management.contests" :"Manage contest",
+	"management.contests.title" :"Create/update contest",
 	"management.contests.list.contest" :"List Contest",
 	"management.contests.add.new.contest" :"Add new Contest",
 	"management.contests.items.per.page" :"Items per page:",
@@ -120,5 +122,9 @@
 	"management.contests.update.action" : "Action",
 	"management.contests.list.problem.of.contest" : "List problem of contest:",
 	"management.contests.list.team.of.contest" : "List team of Contest",
-	"management.contests.list.member" : "Member"
+	"management.contests.list.member" : "Member",
+	"home.you.are.admin" : "Are you admin?",
+	"home.you.are.admin.go" : "Click here to create and manage the contest.",
+	"home.you.are.student" : "Are you student?",
+	"home.you.are.student.go" : "Click here to join the contest."
 }
