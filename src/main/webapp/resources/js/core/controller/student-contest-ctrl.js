@@ -95,6 +95,15 @@ var studentContestProblemsController = function ($state, $scope,$stateParams, co
 		
 		var files = [];
 		
+		if (!$scope.submit.file){
+			alert("Bạn chưa chọn file.");
+			return;
+		}
+		if(!$scope.submit.idProblemForTeam){
+			alert("Bạn chưa chọn câu hỏi cần nộp.")
+			return;
+		}
+		
 		files.push({name:"file", file : $scope.submit.file});
 		files.push({name:"idContest", file : $scope.contest.id});
 		files.push({name:"idTeam", file : findTeamIdByEmailUserLogin()});
