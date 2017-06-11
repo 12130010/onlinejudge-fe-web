@@ -10,6 +10,7 @@
 		<title>Online Judge</title>
 		<link rel="stylesheet" href="resources/css/bootstrap/bootstrap.css">
 		<link rel="stylesheet" href="resources/css/custom/custom.css">
+		<link rel="stylesheet" href="resources/css/custom/form.css">
 		<link rel="stylesheet" href="resources/css/angular/angular-material.css">
 		
 		<script src="resources/js/lib/jquery-3.2.0.js"></script>
@@ -29,6 +30,7 @@
 		<script src="resources/js/lib/angular-messages.js"></script>
 		<script src="resources/js/lib/angular-translate.js"></script>
 		<script src="resources/js/lib/angular-translate-loader-partial.js"></script>
+	
 		
 	</head> 
 	<body ng-app="onlinejudgeApp" ng-controller="mainController" id="onlinejudgeApp">
