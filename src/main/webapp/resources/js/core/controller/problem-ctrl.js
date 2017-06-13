@@ -1,5 +1,5 @@
 'use strict';
-var problemController = function ($state, $scope, commonService, problemService){
+var problemController = function ($state, $scope, commonService, connectorService, problemService){
 	
 	$scope.createProblem = function createProblem(){
 		//model binding with ui
@@ -94,6 +94,26 @@ var problemController = function ($state, $scope, commonService, problemService)
 				alert("Delete fail!")
 			});
 		}
+	}
+	
+	$scope.openProblem = function openProblem(problem){
+		var resource = {
+			"resourceType" : "problem",
+			"fileName" : problem.filePath
+		}
+		
+		connectorService.post(
+				{
+					actionName: "RESOURCE_GENERATE_TOKEN",
+					actionParams : [],
+					data: resource
+				}
+		).then(function success(response){
+			 var win = window.open(commonService.getUrl(commonService.urlMap["RESOURCE_GET_RESOURCE"], [response.data.obj.token]), '_blank');
+			  win.focus();
+		}, function error(response){
+			alert("Cannot access server! Please contact admin!");
+		});
 	}
 	
 	function init(){

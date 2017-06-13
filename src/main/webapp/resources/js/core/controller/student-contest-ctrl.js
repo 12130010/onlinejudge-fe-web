@@ -12,22 +12,26 @@ var studentContestController = function ($state, $scope, commonService, contestS
 /**
  * 
  */
-var studentContestDetailController = function ($state, $scope,$stateParams, commonService, contestService, problemService){
+var studentContestDetailController = function ($state, $scope,$stateParams, commonService, contestService, problemService, teamService){
 	function init(){
 		$scope.contest = contestService.detailContestForUser;
+		$scope.team = teamService.teamDetail
 		
 		contestService.getContestDetailForUser($stateParams.contestID);
+		teamService.getTeamDetail($stateParams.contestID);
 	}
 	init();
 }
 /**
  * 
  */
-var studentContestBoardController = function ($state, $scope,$stateParams, commonService, contestService, problemService){
+var studentContestBoardController = function ($state, $scope,$stateParams, commonService, contestService, problemService, teamService){
 	function init(){
 		$scope.contest = contestService.detailContestForUser;
+		$scope.team = teamService.teamDetail
 		
 		contestService.getContestDetailForUser($stateParams.contestID);
+		teamService.getTeamDetail($stateParams.contestID);
 	}
 	init();
 }

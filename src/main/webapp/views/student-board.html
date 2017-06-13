@@ -1,4 +1,5 @@
 <h3>{{'contest' | translate}}: {{contest.longName}} <a ui-sref="student.contest({contestID: contest.id})" style="font-size: small;">{{'studentboard.contest.detail' | translate}}</a></h3>
+<h3>{{'team' | translate}}: {{team.name}}</h3>
 <hr style="width:100%"/>
 <h2 class="text-center">{{'scoreboard' | translate}}</h2>
 <table class="table table-bordered text-center">
@@ -17,7 +18,7 @@
       	<tr ng-repeat="team in contest.listTeam">
       		<td>{{team.rank}}</td>
       		<td style="width:1%; white-space:nowrap; padding: 5px; text-align: center;">{{team.name}}</td>
-      		<td style="width:1%; white-space:nowrap; text-align: center;">{{team.totalProblemResolve + " / " + team.totalTimeToResolve}}</td>
+      		<td style="width:1%; white-space:nowrap; text-align: center;">{{team.totalProblemResolve + " / " + parseInt(team.totalTimeToResolve/1000)}}</td>
       		<td ng-repeat="problemForTeam in team.listProblem" ng-class="{'problem-resolve': problemForTeam.resolve, 'problem-not-resolve': problemForTeam.listSubmit.length != 0 && !problemForTeam.resolve}">{{problemForTeam.listSubmit.length}}</td>
       	</tr>
 	</tbody>

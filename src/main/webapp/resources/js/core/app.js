@@ -267,6 +267,8 @@ onlinejudgeApp.config(['$stateProvider', '$urlRouterProvider', function($statePr
 		 $translate.use(lang);
 	 }
 	 
+	 $scope.parseInt = parseInt;
+	 
 	 function init(){
 		 if(userService.isAuthenticated()){
 			 userService.loadUserDetail();

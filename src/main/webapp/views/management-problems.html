@@ -24,7 +24,7 @@
     <tbody>
       <tr dir-paginate="problem in listProblem | itemsPerPage: pageSize">
       	<td>
-      		{{problem.name}}
+      		<a ng-click="openProblem(problem)">{{problem.name}}</a>
       	</td>
       	<td>
       		{{problem.timeLimit}}
