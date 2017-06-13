@@ -344,7 +344,7 @@
 							<div class="cols-sm-10">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-									<button ng-click="addNewProblemForContest()">{{isEditing ? 'management.contests.update.problem' : 'management.contests.add.problem' | translate }}</button> 
+									<button type="button" class="btn btn-primary" ng-click="addNewProblemForContest()">{{isEditing ? 'management.contests.update.problem' : 'management.contests.add.problem' | translate }}</button> 
 								</div>
 							</div>
 						</div>
@@ -372,8 +372,8 @@
 							<td>{{problemForContest.color}}</td>
 							<td>{{problemForContest.score}}</td>
 							<td>
-								<button ng-click="editProblemForContest($index)">{{'management.contests.update.problem' | translate}}</button>
-								<button ng-click="removeProblemForContest($index)">{{'management.contests.delete' | translate}}</button>
+								<button type="button" class="btn btn-primary" ng-click="editProblemForContest($index)">{{'management.contests.update.problem' | translate}}</button>
+								<button type="button" class="btn btn-danger" ng-click="removeProblemForContest($index)">{{'management.contests.delete' | translate}}</button>
 							</td>
 						</tr>
 					</tbody>
