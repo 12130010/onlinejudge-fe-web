@@ -14,6 +14,7 @@
 	"update" : "Update",
 	"delete" : "Delete",
 	"edit" : "Edit",
+	"close" : "Close",
 	"studentcontest.detail" : "Contest detail",
 	"studentsubmits.list.submits" : "List submits",
 	"studentsubmits.date.submit" : "Date submit",

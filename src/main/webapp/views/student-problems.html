@@ -11,38 +11,45 @@
 		</ul>
 	</div>
 	<div class="col-xs-6">
-		<h1>{{'studentproblems.submit.problem' | translate}}</h1>
-		<div class="main-login main-center" style="max-width: 100%;">
-			<div class="form-group">
-				<label for="name" class="cols-sm-2 control-label">{{'studentproblems.file' | translate}}</label>
-				<div class="cols-sm-10">
-					<div class="input-group">
-						<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-						<input type="file" class="form-control" name="name" id="name"  placeholder="File" required="required"
-							file-model="submit.file"/>
+		<h1 class="text-center">{{'studentproblems.submit.problem' | translate}}</h1>
+		<form class="form-style-9">
+			<ul>
+				<li>
+					<div class="form-group">
+						<label for="name" class="cols-sm-2 control-label">{{'studentproblems.file' | translate}}</label>
+						<div class="cols-sm-10">
+							<div class="input-group">
+								<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+								<input type="file" class="form-control" name="name" id="name"  placeholder="File" required="required"
+									file-model="submit.file"/>
+							</div>
+						</div>
 					</div>
-				</div>
-			</div>
-			<div class="form-group">
-				<label for="name" class="cols-sm-2 control-label">{{'studentproblems.problem' | translate}}</label>
-				<div class="cols-sm-10">
-					<div class="input-group">
-						<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-						<select ng-model="submit.idProblemForTeam" style="color: black;">
-							<option ng-repeat="problem in contest.listProblem" ng-value="problem.id">{{problem.nameDisplay}}</option>
-						</select>
+				</li>
+				<li>
+					<div class="form-group">
+						<label for="name" class="cols-sm-2 control-label">{{'studentproblems.problem' | translate}}</label>
+						<div class="cols-sm-10">
+							<div class="input-group">
+								<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+								<select ng-model="submit.idProblemForTeam" style="color: black;" class="form-control">
+									<option ng-repeat="problem in contest.listProblem" ng-value="problem.id">{{problem.nameDisplay}}</option>
+								</select>
+							</div>
+						</div>
 					</div>
-				</div>
-			</div>
-			<div class="form-group">
-				<label for="name" class="cols-sm-2 control-label">{{'studentproblems.submit' | translate}}</label>
-				<div class="cols-sm-10">
-					<div class="input-group">
-						<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-						<button ng-click="submitProblem()">{{'studentproblems.submit' | translate}}</button>
+				</li>
+				<li>
+					<div class="form-group">
+						<label for="name" class="cols-sm-2 control-label">{{'studentproblems.submit' | translate}}</label>
+						<div class="cols-sm-10">
+							<div class="input-group">
+								<button ng-click="submitProblem()" class="btn btn-success">{{'studentproblems.submit' | translate}}</button>
+							</div>
+						</div>
 					</div>
-				</div>
-			</div>
-		</div>
+				</li>
+			</ul>
+		</form>
 	</div>
 </div>

@@ -1,7 +1,7 @@
 <h1 class="text-center">{{'contests' | translate}}</h1>
 <div class="col-xs-12">
 	<div class="col-xs-4">
-		<a class="btn btn-primary" ng-click="createContest()">{{'managementcontest.add' | translate}}</a>
+		<a class="btn btn-custom" ng-click="createContest()">{{'managementcontest.add' | translate}}</a>
 	</div>
 	<div class="col-xs-4 pull-right">
 	  <label for="search">{{'managementcontest.item.per.page' | translate}}:</label>
@@ -11,17 +11,17 @@
  <table class="table table-bordered">
     <thead>
       <tr bgcolor="#363636" style="color: white;">
-        <th>{{'student.short.name' | translate}}</th>
-        <th>{{'student.long.name' | translate}}</th>
-        <th>{{'student.description' | translate}}</th>
-        <th>{{'student.start.date' | translate}}</th>
-        <th>{{'student.freeze.date' | translate}}</th>
-        <th>{{'student.end.date' | translate}}</th>
-        <th>{{'student.member.per.team' | translate}}</th>
-        <th>{{'student.number.problem' | translate}}</th>
-        <th>{{'student.number.team' | translate}}</th>
-        <th>{{'update' | translate}}</th>
-        <th>{{'delete' | translate}}</th>
+        <th class="text-center">{{'student.short.name' | translate}}</th>
+        <th class="text-center">{{'student.long.name' | translate}}</th>
+        <th class="text-center">{{'student.description' | translate}}</th>
+        <th class="text-center">{{'student.start.date' | translate}}</th>
+        <th class="text-center">{{'student.freeze.date' | translate}}</th>
+        <th class="text-center">{{'student.end.date' | translate}}</th>
+        <th class="text-center">{{'student.member.per.team' | translate}}</th>
+        <th class="text-center">{{'student.number.problem' | translate}}</th>
+        <th class="text-center">{{'student.number.team' | translate}}</th>
+        <th class="text-center">{{'update' | translate}}</th>
+        <th class="text-center">{{'delete' | translate}}</th>
       </tr>
     </thead>
     <tbody>
@@ -80,99 +80,107 @@
           <h4 ng-if="!contest.id" class="modal-title">{{'managementcontest.add' | translate}}</h4>
           <h4 ng-if="contest.id" class="modal-title">{{'managementcontest.update' | translate}}</h4>
         </div>
-        <div class="modal-body">
-			<div class="row main" style="margin: 0 15px;">
-				<div class="main-login main-center" style="max-width: 100%;">
-					<div class="form-group">
-						<label for="name" class="cols-sm-2 control-label">{{'student.short.name' | translate}}</label>
-						<div class="cols-sm-10">
-							<div class="input-group">
-								<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-								<input type="text" class="form-control" name="name" id="name"  placeholder="Enter Contest's short name"
-								ng-model="contest.shortName" required="required"/>
+        <form class="form-style-9">
+	        <div class="modal-body">
+	        	<ul>
+	        		<li>
+						<div class="form-group">
+							<label for="name" class="cols-sm-2 control-label">{{'student.short.name' | translate}}</label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+									<input type="text" class="form-control" name="name" id="name"  placeholder="Enter Contest's short name"
+									ng-model="contest.shortName" required="required"/>
+								</div>
 							</div>
 						</div>
-					</div>
-					<div class="form-group">
-						<label for="name" class="cols-sm-2 control-label">{{'student.long.name' | translate}}</label>
-						<div class="cols-sm-10">
-							<div class="input-group">
-								<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-								<input type="text" class="form-control" name="name" id="name"  placeholder="Enter Contest's long name"
-								ng-model="contest.longName" required="required"/>
+					</li>
+					<li>
+						<div class="form-group">
+							<label for="name" class="cols-sm-2 control-label">{{'student.long.name' | translate}}</label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+									<input type="text" class="form-control" name="name" id="name"  placeholder="Enter Contest's long name"
+									ng-model="contest.longName" required="required"/>
+								</div>
 							</div>
 						</div>
-					</div>
-					<div class="form-group">
-						<label for="name" class="cols-sm-2 control-label">{{'student.description' | translate}}</label>
-						<div class="cols-sm-10">
-							<div class="input-group">
-								<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-								<input type="text" class="form-control" name="name" id="name"  placeholder="Enter Contest's desciption"
-								ng-model="contest.description" required="required"/>
+					</li>
+					<li>
+						<div class="form-group">
+							<label for="name" class="cols-sm-2 control-label">{{'student.description' | translate}}</label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+									<input type="text" class="form-control" name="name" id="name"  placeholder="Enter Contest's desciption"
+									ng-model="contest.description" required="required"/>
+								</div>
 							</div>
 						</div>
-					</div>
-					
-					<div class="form-group">
-						<label for="name" class="cols-sm-2 control-label">{{'student.start.date' | translate}}: dd-mm-yyyy hh:mm:ss</label>
-						<div class="cols-sm-10">
-							<div class="input-group">
-								<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-								<input type="text" class="form-control" name="name" id="name"  placeholder="Start date"
-								ng-model="contest.startDate" required="required" mask-input="99-99-9999 99:99:99" mask-input-placeholder="dd-mm-yyyy hh:mm:ss"/>
+					</li>
+					<li>
+						<div class="form-group">
+							<label for="name" class="cols-sm-2 control-label">{{'student.start.date' | translate}}: dd-mm-yyyy hh:mm:ss</label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+									<input type="text" class="form-control" name="name" id="name"  placeholder="Start date"
+									ng-model="contest.startDate" required="required" mask-input="99-99-9999 99:99:99" mask-input-placeholder="dd-mm-yyyy hh:mm:ss"/>
+								</div>
 							</div>
 						</div>
-					</div>
-					
-					<div class="form-group">
-						<label for="name" class="cols-sm-2 control-label">{{'student.freeze.date' | translate}}: dd-mm-yyyy hh:mm:ss</label>
-						<div class="cols-sm-10">
-							<div class="input-group">
-								<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-								<input type="text" class="form-control" name="name" id="name"  placeholder="Freeze date"
-								ng-model="contest.freezeDate" required="required" mask-input="99-99-9999 99:99:99" mask-input-placeholder="dd-mm-yyyy hh:mm:ss"/>
+					</li>
+					<li>
+						<div class="form-group">
+							<label for="name" class="cols-sm-2 control-label">{{'student.freeze.date' | translate}}: dd-mm-yyyy hh:mm:ss</label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+									<input type="text" class="form-control" name="name" id="name"  placeholder="Freeze date"
+									ng-model="contest.freezeDate" required="required" mask-input="99-99-9999 99:99:99" mask-input-placeholder="dd-mm-yyyy hh:mm:ss"/>
+								</div>
 							</div>
 						</div>
-					</div>
-					
-					<div class="form-group">
-						<label for="name" class="cols-sm-2 control-label">{{'student.end.date' | translate}}: dd-mm-yyyy hh:mm:ss</label>
-						<div class="cols-sm-10">
-							<div class="input-group">
-								<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-								<input type="text" class="form-control" name="name" id="name"  placeholder="End date"
-								ng-model="contest.endDate" required="required" mask-input="99-99-9999 99:99:99" mask-input-placeholder="dd-mm-yyyy hh:mm:ss"/>
+					</li>
+					<li>	
+						<div class="form-group">
+							<label for="name" class="cols-sm-2 control-label">{{'student.end.date' | translate}}: dd-mm-yyyy hh:mm:ss</label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+									<input type="text" class="form-control" name="name" id="name"  placeholder="End date"
+									ng-model="contest.endDate" required="required" mask-input="99-99-9999 99:99:99" mask-input-placeholder="dd-mm-yyyy hh:mm:ss"/>
+								</div>
 							</div>
 						</div>
-					</div>
-					
-					<div class="form-group">
-						<label for="name" class="cols-sm-2 control-label">{{'student.member.per.team' | translate}}</label>
-						<div class="cols-sm-10">
-							<div class="input-group">
-								<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-								<input type="number" class="form-control" name="name" id="name"  placeholder="Number member"
-								ng-model="contest.numberMemPerTeam" required="required"/>
+					</li>
+					<li>	
+						<div class="form-group">
+							<label for="name" class="cols-sm-2 control-label">{{'student.member.per.team' | translate}}</label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+									<input type="number" class="form-control" name="name" id="name"  placeholder="Number member"
+									ng-model="contest.numberMemPerTeam" required="required"/>
+								</div>
 							</div>
 						</div>
-					</div>
-					
-<!-- 					<div class="form-group"> -->
-<!-- 						<label for="name" class="cols-sm-2 control-label">Self register</label> -->
-<!-- 						<div class="cols-sm-10"> -->
-<!-- 							<div class="input-group"> -->
-<!-- 								<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span> -->
-<!-- 								 <md-checkbox ng-model="contest.selfRegister"> -->
-<!-- 						           Self registry -->
-<!-- 						         </md-checkbox> -->
-<!-- 							</div> -->
-<!-- 						</div> -->
-<!-- 					</div> -->
-					
-				</div>
-			</div>
-        </div>
+					</li>	
+	<!-- 					<div class="form-group"> -->
+	<!-- 						<label for="name" class="cols-sm-2 control-label">Self register</label> -->
+	<!-- 						<div class="cols-sm-10"> -->
+	<!-- 							<div class="input-group"> -->
+	<!-- 								<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span> -->
+	<!-- 								 <md-checkbox ng-model="contest.selfRegister"> -->
+	<!-- 						           Self registry -->
+	<!-- 						         </md-checkbox> -->
+	<!-- 							</div> -->
+	<!-- 						</div> -->
+	<!-- 					</div> -->
+				</ul>		
+	        </div>
+        </form>
         <div class="modal-footer">
           <button ng-if="!contest.id" type="button" class="btn btn-success" ng-click="saveContest()">{{'managementcontest.add' | translate}}</button>
           <button ng-if="contest.id" type="button" class="btn btn-success" ng-click="saveContest()">{{'managementcontest.update' | translate}}</button>
@@ -193,44 +201,48 @@
           <h4 class="modal-title">{{'management.contests.add.new.team' | translate}} {{contestSelected.shortName + " - " + contestSelected.longName}}</h4>
         </div>
         <div class="modal-body">
-			<div class="row main" style="margin: 0 15px;">
-				<div class="main-login main-center" style="max-width: 100%;">
-					<div class="form-group">
-						<label for="name" class="cols-sm-2 control-label">{{'management.contests.team.name' | translate}}</label>
-						<div class="cols-sm-10">
-							<div class="input-group">
-								<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-								<input type="text" class="form-control" name="name" id="name"  placeholder="Team's name"
-								ng-model="team.name" required="required"/>
+			 <form class="form-style-9">
+			 	<ul>
+			 		<li>
+						<div class="form-group">
+							<label for="name" class="cols-sm-2 control-label">{{'management.contests.team.name' | translate}}</label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+									<input type="text" class="form-control" name="name" id="name"  placeholder="Team's name"
+									ng-model="team.name" required="required"/>
+								</div>
 							</div>
 						</div>
-					</div>
-					<div class="form-group">
-						<label for="name" class="cols-sm-2 control-label">{{'management.contests.member.email' | translate}}</label>
-						<div class="cols-sm-10">
-							<div class="input-group">
-								<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-								<ul>
-									<li ng-repeat="member in team.listMember">{{member.email}} | <a ng-click="deleteMember(member.email)" style="cursor: pointer;"> x</a></li>
-								</ul>
+					</li>
+					<li>
+						<div class="form-group">
+							<label for="name" class="cols-sm-2 control-label">{{'management.contests.member.email' | translate}}</label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+									<ul>
+										<li ng-repeat="member in team.listMember" style="margin-bottom: 0;min-height: 0;">{{member.email}} | <a ng-click="deleteMember(member.email)" style="cursor: pointer;"> x</a></li>
+									</ul>
+								</div>
 							</div>
 						</div>
-					</div>
-					
-					<div class="form-group">
-						<label for="name" class="cols-sm-2 control-label">{{'management.contests.email.of.member' | translate}}</label>
-						<div class="cols-sm-10">
-							<div class="input-group">
-								<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-								<input type="email" class="form-control" name="name" id="name"  placeholder="Email"
-								ng-model="emailOfMember" required="required"/>
-								<button ng-click="addMember()" class="btn btn-success">Add member to team</button>
+					</li>
+					<li>
+						<div class="form-group">
+							<label for="name" class="cols-sm-2 control-label">{{'management.contests.email.of.member' | translate}}</label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+									<input type="email" class="form-control" name="name" id="name"  placeholder="Email"
+									ng-model="emailOfMember" required="required"/>
+									<button type="button" ng-click="addMember()" class="btn btn-success">Add member to team</button>
+								</div>
 							</div>
 						</div>
-					</div>
-					
-				</div> <!-- END main-login main-center -->
-			</div>
+					</li>
+				</ul>
+			</form>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-success" ng-click="addTeam()">{{'managementcontest.add.team' | translate}}</button>
@@ -251,90 +263,105 @@
           <h4 class="modal-title">{{'management.contests.add.problem.to.contest' | translate}} {{contestSelected.shortName + " - " + contestSelected.longName}}</h4>
         </div>
         <div class="modal-body">
-			<div class="row main" style="margin: 0 15px;">
-				<div class="main-login main-center" style="max-width: 100%;">
-					<div class="form-group">
-						<label for="name" class="cols-sm-2 control-label">{{'management.contests.list.problem' | translate}}</label>
-						<div class="cols-sm-10">
-							<div class="input-group">
-								<span class="input-group-addon" ><i class="fa fa-user fa" aria-hidden="true"></i></span>
-								<select size="6" ng-model="problemSelected" style="color: black;">
-									<option ng-repeat="problem in listProblem" ng-value="problem">{{problem.name}}</option>
-								</select>
+			<form class="form-style-9">
+				<ul>
+					<li>
+						<div class="form-group">
+							<label for="name" class="cols-sm-2 control-label">{{'management.contests.list.problem' | translate}}</label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon" ><i class="fa fa-user fa" aria-hidden="true"></i></span>
+									<select size="6" ng-model="problemSelected" style="color: black;" class="form-control">
+										<option ng-repeat="problem in listProblem" ng-value="problem">{{problem.name}}</option>
+									</select>
+								</div>
 							</div>
 						</div>
-					</div>
-					
-					<div class="form-group">
-						<label for="name" class="cols-sm-2 control-label">{{'management.contests.original.problem' | translate}}</label>
-						<div class="cols-sm-10">
-							<div class="input-group">
-								<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-								<input type="text" class="form-control" name="name" id="name"
-								ng-model="problemSelected.name" required="required" readonly="readonly"/>
+					</li>
+					<li>
+						<div class="form-group">
+							<label for="name" class="cols-sm-2 control-label">{{'management.contests.original.problem' | translate}}</label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+									<input type="text" class="form-control" name="name" id="name"
+									ng-model="problemSelected.name" required="required" readonly="readonly"/>
+								</div>
 							</div>
 						</div>
-					</div>
-					<div class="form-group">
-						<label for="name" class="cols-sm-2 control-label">{{'management.contests.index' | translate}}</label>
-						<div class="cols-sm-10">
-							<div class="input-group">
-								<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-								<input type="number" class="form-control" name="name" id="name"  placeholder="Email"
-								ng-model="problemForContest.index" required="required"/>
+					</li>
+					<li>
+						<div class="form-group">
+							<label for="name" class="cols-sm-2 control-label">{{'management.contests.index' | translate}}</label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+									<input type="number" class="form-control" name="name" id="name"  placeholder="Email"
+									ng-model="problemForContest.index" required="required"/>
+								</div>
 							</div>
 						</div>
-					</div>
-					<div class="form-group">
-						<label for="name" class="cols-sm-2 control-label">{{'management.contests.display.name' | translate}}</label>
-						<div class="cols-sm-10">
-							<div class="input-group">
-								<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-								<input type="text" class="form-control" name="name" id="name"  placeholder="Display name"
-								ng-model="problemForContest.nameDisplay" required="required"/>
+					</li>
+					<li>
+						<div class="form-group">
+							<label for="name" class="cols-sm-2 control-label">{{'management.contests.display.name' | translate}}</label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+									<input type="text" class="form-control" name="name" id="name"  placeholder="Display name"
+									ng-model="problemForContest.nameDisplay" required="required"/>
+								</div>
 							</div>
 						</div>
-					</div>
-					<div class="form-group">
-						<label for="name" class="cols-sm-2 control-label">{{'management.contests.color' | translate}}</label>
-						<div class="cols-sm-10">
-							<div class="input-group">
-								<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-								<input type="text" class="form-control" name="name" id="name"  placeholder="Color"
-								ng-model="problemForContest.color" required="required"/>
+					</li>
+					<li>
+						<div class="form-group">
+							<label for="name" class="cols-sm-2 control-label">{{'management.contests.color' | translate}}</label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+									<input type="text" class="form-control" name="name" id="name"  placeholder="Color"
+									ng-model="problemForContest.color" required="required"/>
+								</div>
 							</div>
 						</div>
-					</div>
-					<div class="form-group">
-						<label for="name" class="cols-sm-2 control-label">{{'management.contests.score' | translate}}</label>
-						<div class="cols-sm-10">
-							<div class="input-group">
-								<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-								<input type="number" class="form-control" name="name" id="name"  placeholder="Email"
-								ng-model="problemForContest.score" required="required"/>
+					</li>
+					<li>
+						<div class="form-group">
+							<label for="name" class="cols-sm-2 control-label">{{'management.contests.score' | translate}}</label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+									<input type="number" class="form-control" name="name" id="name"  placeholder="Email"
+									ng-model="problemForContest.score" required="required"/>
+								</div>
 							</div>
 						</div>
-					</div>
-					<div class="form-group">
-						<label for="name" class="cols-sm-2 control-label">{{'management.contests.score' | translate}}</label>
-						<div class="cols-sm-10">
-							<div class="input-group">
-								<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-								<button ng-click="addNewProblemForContest()">{{isEditing ? 'management.contests.update.problem' : 'management.contests.add.problem' | translate }}</button> 
+					</li>
+					<li>
+						<div class="form-group">
+							<label for="name" class="cols-sm-2 control-label">{{'management.contests.score' | translate}}</label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+									<button ng-click="addNewProblemForContest()">{{isEditing ? 'management.contests.update.problem' : 'management.contests.add.problem' | translate }}</button> 
+								</div>
 							</div>
 						</div>
-					</div>
-					
-				</div> <!-- END main-login main-center -->
-				<table class="table table-bordered">
+					</li>
+				</ul>
+			</form>
+		</div> <!-- END main-login main-center -->
+        <div class="modal-footer">
+        	<table class="table table-bordered">
 					<thead>
 						<tr>
-							<th>{{'management.contests.index' | translate}}Index</th>
-							<th>{{'management.contests.original.name' | translate}}</th>
-							<th>{{'management.contests.display.name' | translate}}</th>
-							<th>{{'management.contests.color' | translate}}</th>
-							<th>{{'management.contests.score' | translate}}</th>
-							<th>{{'management.contests.action' | translate}}</th>
+							<th class="text-center">{{'management.contests.index' | translate}}</th>
+							<th class="text-center">{{'management.contests.original.problem' | translate}}</th>
+							<th class="text-center">{{'management.contests.display.name' | translate}}</th>
+							<th class="text-center">{{'management.contests.color' | translate}}</th>
+							<th class="text-center">{{'management.contests.score' | translate}}</th>
+							<th class="text-center">{{'management.contests.update.action' | translate}}</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -350,12 +377,9 @@
 							</td>
 						</tr>
 					</tbody>
-				</table>	
-			</div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-success" ng-click="updateProblemForContest()">{{'management.contests.update.problem' | translate}}</button>
-          <button type="button" class="btn btn-default" ng-click="closeForm()">{{'management.contests.closes' | translate}}</button>
+				</table>
+	          <button type="button" class="btn btn-success" ng-click="updateProblemForContest()">{{'management.contests.update.problem' | translate}}</button>
+	          <button type="button" class="btn btn-default" ng-click="closeForm()">{{'close' | translate}}</button>
         </div>
       </div>
   </div>
@@ -372,25 +396,25 @@
           <h4 class="modal-title">{{'management.contests.list.problem.of.contest' | translate}} {{contestSelected.shortName + " - " + contestSelected.longName}}</h4>
         </div>
         <div class="modal-body">
-			<div class="row main" style="margin: 0 15px;">
-				<div class="main-login main-center" style="max-width: 100%;">
+			<div class="row main" style="margin: 0;">
+				<div class="main-login" style="max-width: 100%;">
 					<table class="table table-bordered">
 						<thead>
-							<tr>
-								<th>{{'management.contests.index' | translate}}Index</th>
-								<th>{{'management.contests.original.name' | translate}}</th>
-								<th>{{'management.contests.display.name' | translate}}</th>
-								<th>{{'management.contests.color' | translate}}</th>
-								<th>{{'management.contests.score' | translate}}</th>
+							<tr bgcolor="#363636" style="color: white;">
+								<th class="text-center">{{'management.contests.index' | translate}}</th>
+								<th class="text-center">{{'management.contests.original.problem' | translate}}</th>
+								<th class="text-center">{{'management.contests.display.name' | translate}}</th>
+								<th class="text-center">{{'management.contests.color' | translate}}</th>
+								<th class="text-center">{{'management.contests.score' | translate}}</th>
 							</tr>
 						</thead>
 						<tbody>
 							<tr ng-repeat="problemForContest in listProblemForContest track by $index">
-								<td>{{problemForContest.index}}</td>
+								<td class="text-center">{{problemForContest.index}}</td>
 								<td>{{problemForContest.problem.name}}</td>
 								<td>{{problemForContest.nameDisplay}}</td>
 								<td>{{problemForContest.color}}</td>
-								<td>{{problemForContest.score}}</td>
+								<td class="text-center">{{problemForContest.score}}</td>
 							</tr>
 						</tbody>
 					</table>
@@ -398,7 +422,7 @@
 			</div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" ng-click="closeForm()">{{'management.contests.close' | translate}}Close</button>
+          <button type="button" class="btn btn-default" ng-click="closeForm()">{{'management.contests.close' | translate}}</button>
         </div>
       </div>
   </div>
@@ -416,27 +440,27 @@
           <h4 class="modal-title">{{'management.contests.list.team.of.contest' | translate}} {{contestSelected.shortName + " - " + contestSelected.longName}}</h4>
         </div>
         <div class="modal-body">
-			<div class="row main" style="margin: 0 15px;">
-				<div class="main-login main-center" style="max-width: 100%;">
+			<div class="row main" style="margin: 0;">
+				<div class="main-login" style="max-width: 100%;">
 					<table class="table table-bordered">
 						<thead>
-							<tr>
-								<th>{{'management.contests.index' | translate}}</th>
-								<th>{{'management.contests.team.name' | translate}}</th>
-								<th>{{'management.contests.member' | translate}}</th>
-								<th>{{'management.contests.action' | translate}}</th>
+							<tr bgcolor="#363636" style="color: white;">
+								<th class="text-center">{{'management.contests.index' | translate}}</th>
+								<th class="text-center">{{'management.contests.team.name' | translate}}</th>
+								<th class="text-center">{{'management.contests.member.email' | translate}}</th>
+								<th class="text-center">{{'management.contests.update.action' | translate}}</th>
 							</tr>
 						</thead>
 						<tbody>
 							<tr ng-repeat="team in listTeam track by $index">
-								<td>{{$index + 1}}</td>
+								<td class="text-center">{{$index + 1}}</td>
 								<td>{{team.name}}</td>
 								<td>
 									<ul>
 										<li ng-repeat="member in team.listMember">{{member.email}}</li>
 									</ul>
 								</td>
-								<td><button ng-click="deleteTeam(team.id)">{{'management.contests.delete' | translate}}Delete</button></td>
+								<td class="text-center"><button ng-click="deleteTeam(team.id)" class="btn btn-danger">{{'management.contests.delete' | translate}}</button></td>
 							</tr>
 						</tbody>
 					</table>
@@ -444,7 +468,7 @@
 			</div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" ng-click="closeForm()">{{'management.contests.close' | translate}}Close</button>
+          <button type="button" class="btn btn-default" ng-click="closeForm()">{{'close' | translate}}</button>
         </div>
       </div>
   </div>
